@@ -42,7 +42,7 @@ export const getLibrary = () => (dispatch, getState) => {
 			})
 		)
 		.catch((err) => {
-			console.log(err);
+			returnErrors('Something went wrong.', 'danger', 400);
 		});
 };
 
@@ -58,13 +58,7 @@ export const addLibraryItem = (libraryItem) => (dispatch, getState) => {
 			})
 		)
 		.catch((err) =>
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			)
+			dispatch(returnErrors('Unable to process request', 'danger', 400))
 		);
 };
 
@@ -84,13 +78,7 @@ export const updateLibraryItem = (libraryItem) => (dispatch, getState) => {
 			});
 		})
 		.catch((err) => {
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			);
+			dispatch(returnErrors('Unable to process request', 'danger', 400));
 		});
 };
 
@@ -105,13 +93,7 @@ export const deleteLibraryItem = (id) => (dispatch, getState) => {
 			})
 		)
 		.catch((err) =>
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			)
+			dispatch(returnErrors('Unable to delete item', 'danger', 400))
 		);
 };
 

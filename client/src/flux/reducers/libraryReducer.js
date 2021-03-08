@@ -9,6 +9,7 @@ import {
 	SET_LIBRARY_CURRENT,
 	CLEAR_LIBRARY_CURRENT,
 	LIBRARY_LOADING,
+	ITEMS_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -36,7 +37,7 @@ export default function libraryReducer(state = initialState, action) {
 		case ADD_LIBRARY_ITEM:
 			return {
 				...state,
-				libraryItems: [...state.library.libraryItems, action.payload],
+				libraryItems: [...state.libraryItems, action.payload],
 				libraryLoading: false,
 			};
 		case UPDATE_LIBRARY_ITEM:
@@ -51,18 +52,21 @@ export default function libraryReducer(state = initialState, action) {
 			return {
 				...state,
 				libraryItems: state.libraryItems.filter(
-					(item) => item._id !== action.payload._id
+					(item) => item._id !== action.payload
 				),
-				libraryLoading: false,
 			};
 		case SEARCH_LIBRARY:
 			return {
 				...state,
 				librarySearch: state.libraryItems.filter((item) => {
 					const regex = new RegExp(`${action.payload}`, 'gi');
-					return item.name.match(regex);
-					// item.desc.match(regex)
-					// item.upcs.forEach((upc) => upc.match(regex))
+					const textToSearch = `
+						${item.name}
+						 ${item.size && item.size}
+						 ${item.desc && item.desc}
+						 ${item.upcs.join(' ')}
+						`;
+					return textToSearch.match(regex);
 				}),
 				librarySearchTerm: action.payload,
 			};

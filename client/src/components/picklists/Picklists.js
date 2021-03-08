@@ -73,15 +73,21 @@ const Picklists = ({
 						onClick={() => handleToggle(picklist._id)}
 						className='picklist-header d-flex align-items-center'>
 						<div className='picklist-info'>
-							<h4 className='card-title'>{picklist.list_name}</h4>
-							<h5 className='card-subtitle text-dark'>
-								<span className='text-muted'>by </span>
+							<h4 className='picklist-title'>
+								{picklist.list_name}
+							</h4>
+							<h5 className='picklist-subtitle'>
+								<span className='picklist-subtitle-by'>
+									by{' '}
+								</span>
 								{picklist.author_name}
 							</h5>
 							<small>{formatDateAndTimeCST(picklist.date)}</small>
 						</div>
 						<div className='picklist-status ml-auto'>
-							<Button>{picklist.status.toUpperCase()}</Button>
+							<Button className={`status-${picklist.status}`}>
+								{picklist.status.toUpperCase()}
+							</Button>
 						</div>
 					</CardBody>
 

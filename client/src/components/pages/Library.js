@@ -4,7 +4,12 @@ import { Container } from 'reactstrap';
 import BottomNav from '../layout/BottomNav';
 import LibrarySearch from '../library/LibrarySearch';
 import { loadUser } from '../../flux/actions/authActions';
-import { getLibrary } from '../../flux/actions/libraryActions';
+import {
+	addLibraryItem,
+	deleteLibraryItem,
+	getLibrary,
+	updateLibraryItem,
+} from '../../flux/actions/libraryActions';
 import LibraryItems from '../library/LibraryItems';
 import { SkeletonCurrent } from '../skeleton/Skeleton';
 
@@ -16,16 +21,15 @@ const Library = ({
 	getLibrary,
 }) => {
 	// Load User
-	useEffect(() => {
-		loadUser();
-	}, [loadUser]);
+	// useEffect(() => {
+	// 	loadUser();
+	// }, [loadUser]);
 
 	// Load Library
 	useEffect(() => {
-		if (user) {
-			getLibrary();
-		}
-	}, [user, getLibrary]);
+		getLibrary();
+		// eslint-ignore-next-line
+	}, [getLibrary]);
 
 	const loading = (
 		<Fragment>

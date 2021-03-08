@@ -4,14 +4,14 @@
   padding: 0; }
 
 body {
-  background: #333;
-  color: #f4f4f4; }
+  background: #303030;
+  color: #eeeeee; }
 
 a,
 a:hover,
 a:visited,
 a:focus {
-  color: #f4f4f4;
+  color: #eeeeee;
   text-decoration: none; }
 
 li {
@@ -27,20 +27,36 @@ li {
     margin: 0.5rem 0.5rem 0.5rem auto; }
 
 .bg-1 {
-  background-color: #b40000; }
+  background-color: #4b4b4b; }
 
 .bg-2 {
-  background-color: #f4f4f4; }
+  background-color: #eeeeee; }
 
 .bg-3 {
-  background-color: #afafaf; }
+  background-color: #a0a0a0; }
+
+.status-submitted {
+  background-color: #126c83 !important; }
+
+.status-retrieving {
+  background-color: #d36600 !important; }
+
+.status-retrieved {
+  background-color: #0c7214 !important; }
+
+.status-complete {
+  background-color: #cccccc !important;
+  color: #000000; }
 
 .modal .modal-dialog {
   vertical-align: middle; }
 
 .btn {
   border: none;
-  outline: none; }
+  outline: none;
+  background-color: #a10000; }
+  .btn:hover {
+    background-color: #303030; }
 
 .alert {
   position: absolute;
@@ -59,18 +75,18 @@ li {
     background-color: transparent; }
     .nav-anchor .navbar .navbar-toggler .fas {
       font-size: 1.75rem;
-      color: #f4f4f4; }
+      color: #eeeeee; }
   .nav-anchor .navbar-collapse {
     position: absolute;
     right: 0;
-    background-color: #1a1a1a;
+    background-color: #171717;
     padding: 0;
     z-index: 10;
     height: 100vh; }
     .nav-anchor .navbar-collapse ul li {
       margin: 0; }
       .nav-anchor .navbar-collapse ul li button {
-        background-color: #1a1a1a;
+        background-color: #171717;
         min-width: 10rem;
         display: flex;
         justify-content: space-between;
@@ -78,10 +94,10 @@ li {
         border-radius: 0;
         padding: 1rem; }
         .nav-anchor .navbar-collapse ul li button:hover {
-          background-color: #b40000; }
+          background-color: #a10000; }
         .nav-anchor .navbar-collapse ul li button i {
           margin-right: 0.5rem;
-          background-color: #afafaf;
+          background-color: #a0a0a0;
           border-radius: 50%;
           padding: 0.5rem;
           min-width: 2.2rem;
@@ -90,7 +106,7 @@ li {
 .bottom-nav {
   margin-top: 2rem;
   padding: 0;
-  background-color: #afafaf; }
+  background-color: #a0a0a0; }
   .bottom-nav .nav {
     width: 100%;
     display: flex;
@@ -103,9 +119,9 @@ li {
       justify-content: center;
       align-items: center; }
       .bottom-nav .nav .nav-item:not(:last-child) {
-        border-right: 1px solid #909090; }
+        border-right: 1px solid #818181; }
       .bottom-nav .nav .nav-item:nth-child(odd) {
-        background-color: #a2a2a2; }
+        background-color: #939393; }
       .bottom-nav .nav .nav-item a,
       .bottom-nav .nav .nav-item button {
         width: 100%;
@@ -113,7 +129,7 @@ li {
         line-height: 4.5rem;
         font-size: 1.75rem;
         text-align: center;
-        color: #333;
+        color: #303030;
         border-radius: 0;
         background-color: inherit;
         position: relative; }
@@ -125,17 +141,17 @@ li {
             position: absolute;
             left: -55%;
             top: -40%;
-            background-color: #333;
-            color: #f4f4f4;
+            background-color: #303030;
+            color: #eeeeee;
             font-size: 0.7rem;
             width: 1.5rem;
             height: 1.5rem;
             line-height: 1.25rem;
             border-radius: 50%;
-            border: 2px solid #afafaf; }
+            border: 2px solid #a0a0a0; }
             .bottom-nav .nav .nav-item a .i-super-anchor .i-super.i-super-live,
             .bottom-nav .nav .nav-item button .i-super-anchor .i-super.i-super-live {
-              background-color: #b40000; }
+              background-color: #a10000; }
         .bottom-nav .nav .nav-item a .link-page-name,
         .bottom-nav .nav .nav-item button .link-page-name {
           position: absolute;
@@ -151,7 +167,7 @@ li {
   .alert-anchor .alert .clear-alert-btn {
     position: absolute;
     right: 1rem;
-    color: #333;
+    color: #303030;
     background-color: transparent;
     outline: none;
     border: none;
@@ -166,6 +182,29 @@ li {
       outline: none;
       border: none; }
 
+.modal-alert-anchor {
+  position: relative; }
+  .modal-alert-anchor .alert {
+    z-index: 10;
+    top: 0; }
+    .modal-alert-anchor .alert .clear-alert-btn {
+      position: absolute;
+      right: 1rem;
+      color: #303030;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      margin: 0;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      -webkit-appearance: none;
+      -moz-appearance: none; }
+      .modal-alert-anchor .alert .clear-alert-btn:hover, .modal-alert-anchor .alert .clear-alert-btn:focus, .modal-alert-anchor .alert .clear-alert-btn:active {
+        background: transparent;
+        outline: none;
+        border: none; }
+
 .home {
   display: flex;
   flex-direction: column;
@@ -178,17 +217,21 @@ li {
     min-width: 5rem;
     min-height: 5rem;
     border-radius: 50%;
-    color: #f4f4f4;
-    background-color: #b40000;
-    border: 0.25rem solid #333;
+    color: #eeeeee;
+    background-color: #a10000;
+    border: 0.25rem solid #303030;
     display: flex;
     align-items: center;
     justify-content: center; }
     .home .new-list-btn:active {
-      background-color: #810000; }
+      background-color: #6e0000; }
     .home .new-list-btn i {
       font-size: 1.5rem; }
 
+.picklist .picklist-header .picklist-info .picklist-subtitle {
+  color: #a0a0a0; }
+  .picklist .picklist-header .picklist-info .picklist-subtitle .picklist-subtitle-by {
+    color: #303030; }
 .picklist .picklist-header .picklist-status button {
   font-size: 0.8rem; }
 .picklist .picklist-collapse-upper .card-body {
@@ -196,7 +239,7 @@ li {
   .picklist .picklist-collapse-upper .card-body div {
     display: flex;
     justify-content: space-between;
-    background-color: #afafaf;
+    background-color: #a0a0a0;
     padding: 0.5rem 1rem;
     margin-top: 0.75rem; }
     .picklist .picklist-collapse-upper .card-body div .btn {
@@ -211,7 +254,7 @@ li {
     border: none;
     margin-bottom: 0.75rem; }
     .picklist .picklist-collapse-lower .picklist-body ul li:nth-child(odd) {
-      background-color: #afafaf; }
+      background-color: #a0a0a0; }
     .picklist .picklist-collapse-lower .picklist-body ul li {
       display: flex;
       padding: 0.75rem 1rem; }
@@ -222,17 +265,17 @@ li {
   animation: skeleton 1s linear infinite alternate; }
   .picklist-skeleton .card-body-skeleton .picklist-info-skeleton .card-title-skeleton {
     width: 100%;
-    background-color: #6f6f6f;
+    background-color: #606060;
     border-radius: 0.25rem;
     opacity: 0.5; }
   .picklist-skeleton .card-body-skeleton .picklist-info-skeleton .card-subtitle-skeleton {
     width: 75%;
-    background-color: #333;
+    background-color: #303030;
     border-radius: 0.25rem;
     opacity: 0.5; }
   .picklist-skeleton .card-body-skeleton .picklist-info-skeleton .date-skeleton {
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: #eeeeee;
     border-radius: 0.25rem;
     opacity: 0.5; }
   .picklist-skeleton .card-body-skeleton .picklist-status-skeleton button {
@@ -253,7 +296,7 @@ li {
 
 .current-items-list .list-group-item {
   height: 4rem;
-  background-color: #f4f4f4; }
+  background-color: #eeeeee; }
 .current-items-list .current-items-name {
   margin: 0 1rem; }
 .current-items-list .current-items-item-options {
@@ -275,8 +318,8 @@ li {
       width: 100%;
       height: 3rem;
       border-radius: 0;
-      background-color: #afafaf;
-      color: #b40000;
+      background-color: #a0a0a0;
+      color: #a10000;
       outline: none; }
   .current-items-list .current-items-item-options .qty-change-submit {
     margin-bottom: 1rem;
@@ -285,13 +328,13 @@ li {
       width: 100%;
       height: 3rem;
       border-radius: 0;
-      background-color: #b40000; }
+      background-color: #a10000; }
       .current-items-list .current-items-item-options .qty-change-submit button i {
-        color: #f4f4f4; }
+        color: #eeeeee; }
       .current-items-list .current-items-item-options .qty-change-submit button:first-child {
-        border-right: 1px solid #680000; }
+        border-right: 1px solid #303030; }
       .current-items-list .current-items-item-options .qty-change-submit button:last-child {
-        border-left: 1px solid #680000; }
+        border-left: 1px solid #303030; }
   .current-items-list .current-items-item-options .remove-btn {
     width: 100%;
     height: 3rem; }
@@ -306,7 +349,7 @@ li {
     position: relative;
     height: 1rem; }
     .current-picklist-skeleton .current-header-skeleton .current-title-skeleton {
-      background-color: #f4f4f4;
+      background-color: #eeeeee;
       font-weight: 100;
       font-size: 1.75rem;
       width: 50%;
@@ -326,14 +369,14 @@ li {
       .current-picklist-skeleton .list-group .list-group-item p {
         margin: 0; }
       .current-picklist-skeleton .list-group .list-group-item .name-skeleton {
-        background-color: #afafaf;
+        background-color: #a0a0a0;
         width: 60%; }
       .current-picklist-skeleton .list-group .list-group-item .qty-skeleton {
-        background-color: #333;
+        background-color: #303030;
         width: 2.5rem; }
 
 .library {
-  color: #333; }
+  color: #303030; }
   .library .library-search .add-library-item-form .form-control {
     height: 4rem;
     font-size: 1.5rem;
@@ -349,7 +392,7 @@ li {
   .library .no-library-items-found {
     font-size: 1.25rem;
     line-height: 2.5rem;
-    color: #f4f4f4; }
+    color: #eeeeee; }
   .library .library-item-header .library-item-info .library-item-name {
     font-weight: 400; }
     .library .library-item-header .library-item-info .library-item-name .library-item-size {
@@ -360,7 +403,7 @@ li {
     .library .library-item-collapse-upper .card-body div {
       display: flex;
       justify-content: space-between;
-      background-color: #333;
+      background-color: #303030;
       padding: 0.5rem 1rem;
       margin-top: 0.75rem; }
       .library .library-item-collapse-upper .card-body div .btn {
@@ -377,12 +420,12 @@ li {
       .library .library-item-collapse-lower .library-item-upcs ul li {
         display: flex;
         padding: 0.75rem 1rem;
-        background-color: #333; }
+        background-color: #303030; }
         .library .library-item-collapse-lower .library-item-upcs ul li:nth-child(even) {
-          background-color: #595959; }
+          background-color: #565656; }
         .library .library-item-collapse-lower .library-item-upcs ul li .library-item-upc {
           margin: auto;
-          color: #f4f4f4; }
+          color: #eeeeee; }
 
 .library-item-modal .modal-body {
   max-height: 65vh;

@@ -8,25 +8,24 @@ import {
 	FormGroup,
 	Label,
 	Input,
-	InputGroup,
 	ModalFooter,
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
 	addLibraryItem,
 	updateLibraryItem,
-	setLibraryCurrent,
-	clearLibraryCurrent,
+	clearLibrarySearch,
 } from '../../flux/actions/libraryActions';
+import AlertHandler from '../layout/AlertHandler';
+import { returnErrors } from '../../flux/actions/errorActions';
 
 const LibraryItemForm = ({
-	currentLibraryItem,
 	addLibraryItem,
 	updateLibraryItem,
-	setLibraryCurrent,
-	clearLibraryCurrent,
+	clearLibrarySearch,
 	triggerName,
 	newItemData,
+	returnErrors,
 }) => {
 	const [item, setItem] = useState({
 		name: '',
@@ -43,25 +42,14 @@ const LibraryItemForm = ({
 		setItem({ ...item, [e.target.name]: e.target.value });
 	};
 
-	// Bug in the onChange means the UPC cannot be identical to another UPC, or they will become clones that will edit from the same input. Ex. if one UPC is 1234 and another is 123, and I try to add 45 to the second, both UPCs will be 12345 because 123 became 1234.
 	const handleUpcChange = (e, i) => {
-		const updatedUpcs = item.upcs.map((upc) =>
-			item.upcs.indexOf(upc) === i ? e.target.value : upc
-		);
+		const updatedUpcs = item.upcs;
+		updatedUpcs[i] = e.target.value;
 		setItem({
 			...item,
 			upcs: updatedUpcs,
 		});
 	};
-
-	// const handleUpcChange = (index) => (e) => {
-	// 	setItem((item) => ({
-	// 		...item,
-	// 		upcs: item.upcs.map((upc, i) =>
-	// 			index == i ? e.target.value : upc
-	// 		),
-	// 	}));
-	// };
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
@@ -69,25 +57,33 @@ const LibraryItemForm = ({
 		const newData = item;
 		newData.upcs = newData.upcs.filter((upc) => upc !== '');
 
-		// If there is no _id, the item is new
-		if (!newData._id) {
-			// Add the new item
-			console.log(newData);
-			console.log(`item added`);
-			addLibraryItem(newData);
-
-			// If there is _id, the item is being edited
+		if (
+			!newData.name ||
+			newData.name === '' ||
+			!newData.upcs ||
+			newData.upcs === []
+		) {
+			returnErrors(
+				'Item must have a name and at least one UPC',
+				'danger',
+				null
+			);
 		} else {
-			// Update item
-			console.log(newData);
-			console.log(`item ${newData._id} updated`);
-			updateLibraryItem(newData);
-		}
+			// If there is no _id, the item is new
+			if (!newData._id) {
+				// Add the new item
+				addLibraryItem(newData);
 
-		// Clear Current to reset edit state and forms
-		console.log('Current cleared');
-		// clearLibraryCurrent();
-		handleToggle();
+				// If there is _id, the item is being edited
+			} else {
+				// Update item
+				updateLibraryItem(newData);
+			}
+
+			// Clear Current to reset edit state and forms
+			clearLibrarySearch();
+			handleToggle();
+		}
 	};
 
 	useEffect(() => {
@@ -102,12 +98,12 @@ const LibraryItemForm = ({
 
 	return (
 		<Fragment>
-			{/* Modal Trigger */}
 			<Button
 				className='bg-1'
 				onClick={() => {
 					handleToggle();
 					setItem(newItemData);
+					clearLibrarySearch();
 				}}>
 				{triggerName === 'Edit Item' ? (
 					<Fragment>
@@ -127,7 +123,6 @@ const LibraryItemForm = ({
 				)}
 			</Button>
 
-			{/* Modal */}
 			<Modal
 				isOpen={modal}
 				toggle={handleToggle}
@@ -222,6 +217,9 @@ const LibraryItemForm = ({
 							</Button>
 						</FormGroup>
 					</Form>
+					<div className='modal-alert-anchor'>
+						<AlertHandler />
+					</div>
 				</ModalBody>
 
 				<ModalFooter className='bg-dark'>
@@ -251,6 +249,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
 	addLibraryItem,
 	updateLibraryItem,
-	setLibraryCurrent,
-	clearLibraryCurrent,
+	clearLibrarySearch,
+	returnErrors,
 })(LibraryItemForm);

@@ -1,10 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import { searchLibrary } from '../../flux/actions/libraryActions';
+import {
+	searchLibrary,
+	clearLibrarySearch,
+} from '../../flux/actions/libraryActions';
 import LibraryItemForm from './LibraryItemForm';
 
-const LibrarySearch = ({ librarySearch, searchLibrary }) => {
+const LibrarySearch = ({
+	librarySearch,
+	searchLibrary,
+	clearLibrarySearch,
+}) => {
 	const search = useRef('');
 	const [newItemData, setNewItemData] = useState('');
 
@@ -18,11 +25,10 @@ const LibrarySearch = ({ librarySearch, searchLibrary }) => {
 		if (search.current.value !== '') {
 			searchLibrary(e.target.value);
 		} else {
-			// clearLibrarySearch();
+			clearLibrarySearch();
 		}
 
 		setNewItemData(e.target.value);
-		console.log(e.target.value);
 	};
 
 	return (
@@ -61,4 +67,6 @@ const mapStateToProps = (state) => ({
 	librarySearch: state.library.librarySearch,
 });
 
-export default connect(mapStateToProps, { searchLibrary })(LibrarySearch);
+export default connect(mapStateToProps, { searchLibrary, clearLibrarySearch })(
+	LibrarySearch
+);
