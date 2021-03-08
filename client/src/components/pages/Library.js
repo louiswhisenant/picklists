@@ -4,12 +4,7 @@ import { Container } from 'reactstrap';
 import BottomNav from '../layout/BottomNav';
 import LibrarySearch from '../library/LibrarySearch';
 import { loadUser } from '../../flux/actions/authActions';
-import {
-	addLibraryItem,
-	deleteLibraryItem,
-	getLibrary,
-	updateLibraryItem,
-} from '../../flux/actions/libraryActions';
+import { getLibrary } from '../../flux/actions/libraryActions';
 import LibraryItems from '../library/LibraryItems';
 import { SkeletonCurrent } from '../skeleton/Skeleton';
 
@@ -20,11 +15,6 @@ const Library = ({
 	loadUser,
 	getLibrary,
 }) => {
-	// Load User
-	// useEffect(() => {
-	// 	loadUser();
-	// }, [loadUser]);
-
 	// Load Library
 	useEffect(() => {
 		getLibrary();
@@ -48,12 +38,6 @@ const Library = ({
 				) : (
 					loading
 				)}
-
-				{/* LibrarySearch
-				    LibraryItems
-                        LibraryItem
-                    NewLibraryItem
-                */}
 			</Container>
 			<BottomNav />
 		</Fragment>

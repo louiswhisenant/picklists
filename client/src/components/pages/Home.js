@@ -1,7 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
 import Picklists from '../picklists/Picklists';
-import CreatePicklist from '../picklists/CreatePicklist';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
 	getPicklists,
