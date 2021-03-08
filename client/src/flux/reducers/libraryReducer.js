@@ -9,7 +9,6 @@ import {
 	SET_LIBRARY_CURRENT,
 	CLEAR_LIBRARY_CURRENT,
 	LIBRARY_LOADING,
-	ITEMS_ERROR,
 } from '../actions/types';
 
 const initialState = {
