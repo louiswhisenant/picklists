@@ -8,7 +8,7 @@ import { getCurrentPicklist } from '../../flux/actions/picklistActions';
 import { SkeletonCurrent } from '../skeleton/Skeleton';
 import BottomNav from '../layout/BottomNav';
 
-const CurrentPicklist = ({
+const Current = ({
 	user,
 	authLoading,
 	picklists,
@@ -54,6 +54,4 @@ const mapStateToProps = (state) => ({
 	currentPicklist: state.picklist.currentPicklist,
 });
 
-export default connect(mapStateToProps, { getCurrentPicklist })(
-	CurrentPicklist
-);
+export default connect(mapStateToProps, { getCurrentPicklist })(Current);

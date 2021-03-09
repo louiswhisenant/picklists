@@ -33,7 +33,7 @@ const BottomNav = ({ currentPicklist, picklists }) => {
 				</NavItem>
 				<NavItem>{!currentPicklist ? newList : editList}</NavItem>
 				<NavItem>
-					<Link to='/'>
+					<Link to='/retrieve'>
 						<i className='fas fa-cart-arrow-down i-super-anchor'></i>
 						<span className='link-page-name'>Retrieve</span>
 					</Link>

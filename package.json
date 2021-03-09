@@ -2,7 +2,7 @@
   "name": "picklists",
   "version": "1.0.0",
   "engines": {
-    "node": "12.19.0"
+    "node": "12.x"
   },
   "description": "A MERN app that creates inventory picklists for backstock retrieval",
   "main": "server.js",

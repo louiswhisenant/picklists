@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Styling
@@ -7,13 +7,13 @@ import './App.css';
 
 // Components
 import TopNav from './components/layout/TopNav';
-import BottomNav from './components/layout/BottomNav';
 
 // Routes
 import PrivateRoute from './components/routing/PrivateRoute';
 import Home from './components/pages/Home';
-import CurrentPicklist from './components/pages/CurrentPicklist';
+import Current from './components/pages/Current';
 import Library from './components/pages/Library';
+import Retrieve from './components/pages/Retrieve';
 import Login from './components/auth/Login';
 import { About } from './components/pages/About';
 
@@ -40,11 +40,8 @@ const App = () => {
 				</div>
 				<Switch>
 					<PrivateRoute exact path='/' component={Home} />
-					<PrivateRoute
-						exact
-						path='/current'
-						component={CurrentPicklist}
-					/>
+					<PrivateRoute exact path='/current' component={Current} />
+					<PrivateRoute exact path='/retrieve' component={Retrieve} />
 					<PrivateRoute exact path='/library' component={Library} />
 					<Route exact path='/testing' component={Testing} />
 					<Route exact path='/login' component={Login} />
