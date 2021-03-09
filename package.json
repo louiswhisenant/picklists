@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/louiswhisenant/picklists/issues"
   },
-  "homepage": "https://github.com/louiswhisenant/picklists#readme",
+  "homepage": "https://github.com/louiswhisenant/picklists",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.4",
