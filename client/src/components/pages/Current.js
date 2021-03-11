@@ -18,30 +18,32 @@ const Current = ({
 }) => {
 	useEffect(() => {
 		if (user && !authLoading && picklists && !picklistLoading) {
-			getCurrentPicklist(user._id);
+			getCurrentPicklist(user._id, 'initialized');
 		}
 		// eslint-disable-next-line
 	}, [picklists]);
 
-	return currentPicklist ? (
+	return (
 		<Fragment>
-			<Container className='current page-wrapper'>
-				<div className='current-picklist-header'>
-					<h1 className='text-center current-picklist-title'>
-						{currentPicklist.list_name}
-					</h1>
-				</div>
-				<div>
-					<AddPicklistItem />
-					<CurrentItems />
-					<SubmitCurrent />
-				</div>
-			</Container>
-			<BottomNav />
-		</Fragment>
-	) : (
-		<Fragment>
-			<SkeletonCurrent />
+			{currentPicklist ? (
+				<Container className='current page-wrapper'>
+					<div className='current-picklist-header'>
+						<h1 className='text-center current-picklist-title'>
+							{currentPicklist.list_name}
+						</h1>
+					</div>
+					<div>
+						<AddPicklistItem />
+						<CurrentItems />
+						<SubmitCurrent />
+					</div>
+				</Container>
+			) : (
+				<Fragment>
+					<SkeletonCurrent />
+					<BottomNav />
+				</Fragment>
+			)}
 			<BottomNav />
 		</Fragment>
 	);

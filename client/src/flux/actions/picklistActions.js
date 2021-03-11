@@ -9,34 +9,14 @@ import {
 	SUBMIT_PICKLIST,
 	DELETE_PICKLIST,
 	GET_CURRENT_PICKLIST,
-	SET_CURRENT,
 	CLEAR_CURRENT_PICKLIST,
+	GET_RETRIEVE_PICKLIST,
+	CLEAR_RETRIEVE_PICKLIST,
 	FILTER_PICKLISTS,
 	CLEAR_FILTER,
 	PICKLISTS_LOADING,
 } from './types';
-
-// Get Picklist
-export const getCurrentPicklist = (id) => (dispatch, getState) => {
-	dispatch(setPicklistLoading());
-	axios
-		.get(`/api/picklists/${id}`, tokenConfig(getState))
-		.then((res) =>
-			dispatch({
-				type: GET_CURRENT_PICKLIST,
-				payload: res.data,
-			})
-		)
-		.catch((err) => {
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			);
-		});
-};
+import { bindActionCreators } from 'redux';
 
 // Get Picklists
 export const getPicklists = () => (dispatch, getState) => {
@@ -100,6 +80,10 @@ export const addPicklistItem = (picklist, upc) => (dispatch, getState) => {
 						type: UPDATE_PICKLIST,
 						payload: putRes.data,
 					});
+					dispatch({
+						type: GET_CURRENT_PICKLIST,
+						payload: putRes.data,
+					});
 				});
 		})
 		.catch((err) => {
@@ -123,6 +107,18 @@ export const updatePicklist = (picklist) => (dispatch, getState) => {
 				type: UPDATE_PICKLIST,
 				payload: res.data,
 			});
+			if (res.data.status === 'submitted') {
+				dispatch({ type: GET_CURRENT_PICKLIST });
+			} else if (res.data.status === 'submitted') {
+				dispatch({ type: CLEAR_CURRENT_PICKLIST });
+			} else if (res.data.status === 'retrieving') {
+				dispatch({
+					type: GET_RETRIEVE_PICKLIST,
+					payload: res.data,
+				});
+			} else if (res.data.status === 'retrieved') {
+				dispatch({ type: CLEAR_RETRIEVE_PICKLIST });
+			}
 		})
 		.catch((err) => {
 			dispatch(
@@ -145,6 +141,11 @@ export const submitPicklist = (picklist) => (dispatch, getState) => {
 				type: SUBMIT_PICKLIST,
 				payload: res.data,
 			});
+			if (res.data.status === 'submitted') {
+				dispatch({
+					type: CLEAR_CURRENT_PICKLIST,
+				});
+			}
 		})
 		.catch((err) => {
 			dispatch(
@@ -178,14 +179,58 @@ export const deletePicklist = (id) => (dispatch, getState) => {
 		);
 };
 
-// Set Current Picklist
-export const setCurrent = (picklist) => (dispatch) => {
-	dispatch({ type: SET_CURRENT, payload: picklist });
+// Get Current Picklist
+export const getCurrentPicklist = (id, status) => (dispatch, getState) => {
+	dispatch(setPicklistLoading());
+	axios
+		.get(`/api/picklists/${id}/${status}`, tokenConfig(getState))
+		.then((res) =>
+			dispatch({
+				type: GET_CURRENT_PICKLIST,
+				payload: res.data,
+			})
+		)
+		.catch((err) => {
+			dispatch(
+				returnErrors(
+					err.response.data.msg,
+					'danger',
+					err.response.status
+				)
+			);
+		});
 };
 
 // Clear Current Picklist
 export const clearCurrentPicklist = () => (dispatch) => {
 	dispatch({ type: CLEAR_CURRENT_PICKLIST });
+};
+
+// Get Retrieve Picklist
+export const getRetrievePicklist = (id, status) => (dispatch, getState) => {
+	dispatch(setPicklistLoading());
+	axios
+		.get(`/api/picklists/${id}/${status}`, tokenConfig(getState))
+		.then((res) =>
+			dispatch({
+				type: GET_RETRIEVE_PICKLIST,
+				payload: res.data,
+			})
+		)
+		.catch((err) => {
+			dispatch(
+				returnErrors(
+					err.response.data.msg,
+					'danger',
+					err.response.status
+				)
+			);
+		});
+};
+
+// Clear Retrieve Picklist
+export const clearRetrievePicklist = () => (dispatch) => {
+	dispatch({ type: CLEAR_RETRIEVE_PICKLIST });
 };
 
 // Filter Contacts

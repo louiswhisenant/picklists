@@ -72,11 +72,8 @@ const TopNav = ({ auth }) => {
 
 	return (
 		<Fragment>
-			<div ref={node} className='mb-5 nav-anchor'>
-				<Navbar
-					dark
-					expand='xl'
-					className='bg-1 navbar main-nav top-nav'>
+			<div ref={node} className='mb-5 nav-anchor' id='top-nav'>
+				<Navbar dark className='bg-1'>
 					<Container className='py-1'>
 						<Link to='/' onClick={() => setIsOpen(false)}>
 							<i className='fas fa-home navbar-brand'></i>
@@ -91,7 +88,6 @@ const TopNav = ({ auth }) => {
 							onClick={handleNavToggle}>
 							<i className='fas fa-ellipsis-v'></i>
 						</Button>
-						{/* <NavbarToggler onClick={handleNavToggle} /> */}
 					</Container>
 				</Navbar>
 				<Collapse isOpen={isOpen} navbar className='width'>

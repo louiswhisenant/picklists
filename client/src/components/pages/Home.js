@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import Picklists from '../picklists/Picklists';
+import React, { Fragment, useState, useEffect } from 'react';
+import Picklist from '../picklists/Picklist';
 import { connect } from 'react-redux';
 import {
 	getPicklists,
@@ -9,16 +9,23 @@ import {
 import { loadUser } from '../../flux/actions/authActions';
 import { SkeletonCard } from '../skeleton/Skeleton';
 import BottomNav from '../layout/BottomNav';
-import { Container } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
 
 const Home = ({
 	picklistLoading,
 	user,
+	picklists,
 	authLoading,
 	getPicklists,
 	getCurrentPicklist,
 	loadUser,
 }) => {
+	const [statusFilter, setStatusFilter] = useState({ value: '' });
+
+	const handleStatusFilter = (e) => {
+		setStatusFilter({ value: e.target.value });
+	};
+
 	// Load User
 	useEffect(() => {
 		loadUser();
@@ -35,7 +42,7 @@ const Home = ({
 	// Load Current Picklist
 	useEffect(() => {
 		if (user) {
-			getCurrentPicklist(user._id);
+			getCurrentPicklist(user._id, 'initialized');
 		}
 		// eslint-disable-next-line
 	}, [user, getCurrentPicklist]);
@@ -53,7 +60,37 @@ const Home = ({
 			<Container className='page-wrapper home'>
 				{user && !authLoading && !picklistLoading ? (
 					<Fragment>
-						<Picklists />
+						<div className='status-filter-hud'>
+							<Button
+								className='status-filter-clear-btn'
+								value=''
+								onClick={(e) => handleStatusFilter(e)}>
+								<i className='fas fa-ban'></i>
+							</Button>
+							<select
+								className='form-select status-filter-select'
+								value={statusFilter.value}
+								onChange={(e) => handleStatusFilter(e)}>
+								<option value={''}>Filter by Status</option>
+								<option value='initialized'>Initialized</option>
+								<option value='submitted'>Submitted</option>
+								<option value='retrieving'>Retrieving</option>
+								<option value='retrieved'>Retrieved</option>
+								<option value='complete'>Complete</option>
+							</select>
+						</div>
+						{picklists.length > 0 ? (
+							picklists.map((list) =>
+								list.status === statusFilter.value ||
+								!statusFilter.value ? (
+									<Picklist key={list._id} picklist={list} />
+								) : null
+							)
+						) : (
+							<h2 className='no-picklists-msg'>
+								There are no picklists to view.
+							</h2>
+						)}
 					</Fragment>
 				) : (
 					loading

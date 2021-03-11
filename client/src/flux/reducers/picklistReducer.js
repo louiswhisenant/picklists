@@ -7,29 +7,20 @@ import {
 	DELETE_PICKLIST,
 	GET_CURRENT_PICKLIST,
 	CLEAR_CURRENT_PICKLIST,
-	SET_CURRENT,
+	GET_RETRIEVE_PICKLIST,
+	CLEAR_RETRIEVE_PICKLIST,
 	PICKLISTS_LOADING,
 } from '../actions/types';
 
 const initialState = {
 	currentPicklist: null,
+	retrievePicklist: null,
 	picklists: [],
 	picklistLoading: false,
 };
 
 export default function authReducer(state = initialState, action) {
 	switch (action.type) {
-		// case NAME_OF_CASE:
-		// 	return {
-		// 		...state,
-		// 		stateVar: value,
-		// 	};
-		// Next Case
-		// case GET_PICKLIST:
-		// 	return {
-		// 		...state,
-		// 		stateVar: value,
-		// 	};
 		case GET_PICKLIST:
 			return {
 				...state,
@@ -44,13 +35,13 @@ export default function authReducer(state = initialState, action) {
 		case ADD_PICKLIST:
 			return {
 				...state,
+				currentPicklist: action.payload,
 				picklists: [...state.picklists, action.payload],
 				picklistLoading: false,
 			};
 		case UPDATE_PICKLIST:
 			return {
 				...state,
-				currentPicklist: action.payload,
 				picklists: state.picklists.map((picklist) =>
 					picklist._id === action.payload._id
 						? action.payload
@@ -61,7 +52,6 @@ export default function authReducer(state = initialState, action) {
 		case SUBMIT_PICKLIST:
 			return {
 				...state,
-				currentPicklist: null,
 				picklists: state.picklists.map((picklist) =>
 					picklist._id === action.payload._id
 						? action.payload
@@ -87,10 +77,16 @@ export default function authReducer(state = initialState, action) {
 				...state,
 				currentPicklist: null,
 			};
-		case SET_CURRENT:
+		case GET_RETRIEVE_PICKLIST:
 			return {
 				...state,
-				currentPicklist: action.payload,
+				retrievePicklist: action.payload,
+				picklistLoading: false,
+			};
+		case CLEAR_RETRIEVE_PICKLIST:
+			return {
+				...state,
+				retrievePicklist: null,
 			};
 		case PICKLISTS_LOADING:
 			return {

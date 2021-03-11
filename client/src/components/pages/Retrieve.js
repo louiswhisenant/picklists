@@ -1,22 +1,23 @@
 import React, { Fragment, useEffect } from 'react';
-import Picklists from '../picklists/Picklists';
 import { connect } from 'react-redux';
 import {
 	getPicklists,
-	getCurrentPicklist,
-	deletePicklist,
+	getRetrievePicklist,
 } from '../../flux/actions/picklistActions';
 import { loadUser } from '../../flux/actions/authActions';
 import { SkeletonCard } from '../skeleton/Skeleton';
 import BottomNav from '../layout/BottomNav';
 import { Container } from 'reactstrap';
+import RetrieveLists from '../retrieve/RetrieveLists';
+import RetrieveList from '../retrieve/RetrieveList';
 
 const Retrieve = ({
 	picklistLoading,
 	user,
+	retrievePicklist,
 	authLoading,
 	getPicklists,
-	getCurrentPicklist,
+	getRetrievePicklist,
 	loadUser,
 }) => {
 	// Load User
@@ -32,13 +33,13 @@ const Retrieve = ({
 		// eslint-disable-next-line
 	}, [user, getPicklists]);
 
-	// Load Current Picklist
+	// Load Retrieve Picklist
 	useEffect(() => {
 		if (user) {
-			getCurrentPicklist(user._id);
+			getRetrievePicklist(user._id, 'retrieving');
 		}
 		// eslint-disable-next-line
-	}, [user, getCurrentPicklist]);
+	}, [user, getRetrievePicklist]);
 
 	const loading = (
 		<Fragment>
@@ -54,9 +55,11 @@ const Retrieve = ({
 		<Fragment>
 			<Container className='page-wrapper retrieve'>
 				{user && !authLoading && !picklistLoading ? (
-					<Fragment>
-						<Picklists />
-					</Fragment>
+					retrievePicklist ? (
+						<RetrieveList />
+					) : (
+						<RetrieveLists />
+					)
 				) : (
 					loading
 				)}
@@ -67,8 +70,7 @@ const Retrieve = ({
 };
 
 const mapStateToProps = (state) => ({
-	picklists: state.picklist.picklists,
-	currentPicklist: state.picklist.currentPicklist,
+	retrievePicklist: state.picklist.retrievePicklist,
 	picklistLoading: state.picklist.picklistLoading,
 	user: state.auth.user,
 	authLoading: state.auth.authLoading,
@@ -77,6 +79,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
 	getPicklists,
 	loadUser,
-	getCurrentPicklist,
-	deletePicklist,
+	getRetrievePicklist,
 })(Retrieve);

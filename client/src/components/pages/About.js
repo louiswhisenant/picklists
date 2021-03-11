@@ -11,11 +11,23 @@ export const About = () => {
 			</p>
 			<br />
 			<p>
-				The goal of Picklists is to increase increase work efficiency by
-				targeting specificity; with Picklists, the user retrieves only
-				what is needed from storage, and should therefore return from
-				the shelf with little to no stock left over, when the app is
-				used as intended.
+				The goal of Picklists is to increase work efficiency by
+				targeting problem areas with specificity; with Picklists, the
+				user retrieves only what is needed from storage, and should
+				therefore return from the shelf with little to no stock left
+				over, when the app is used as intended.
+			</p>
+			<br />
+			<p>
+				Picklists was made with the user's needs in mind. It is only
+				meant to make the user's work easier and more efficient, not
+				more proper, and it is therefore unopinionated in much of its
+				functionality. The user can request multiples of a given item,
+				but one scan of the correct barcode will clear the item from the
+				retrieval. Features like this found in Picklists are by
+				intention. The ultimate goal is to harness the ability to
+				quickly strategize and react to in-store problems, without being
+				bound by the stubborn rulesets of stricter applications.
 			</p>
 			<br />
 			<br />

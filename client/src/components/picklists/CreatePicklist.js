@@ -55,11 +55,10 @@ const CreatePicklist = ({
 			};
 
 			addPicklist(newPicklist);
-			getCurrentPicklist();
 
 			handleToggle();
+			history.push('/current');
 		}
-		history.push('/current');
 	};
 
 	return (

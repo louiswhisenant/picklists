@@ -26,9 +26,7 @@ export const SkeletonCard = () => {
 						Oct 12 2021, 11:59PM
 					</small>
 				</div>
-				<div className='picklist-status-skeleton ml-auto'>
-					<Button>&nbsp;</Button>
-				</div>
+				<div className='picklist-status-skeleton ml-auto'>&nbsp;</div>
 			</CardBody>
 		</Card>
 	);
@@ -40,7 +38,7 @@ export const SkeletonCurrent = () => {
 			<Container className='current-picklist-skeleton'>
 				<div className='current-header-skeleton'>
 					<h1 className='text-center current-title-skeleton'>
-						This is a Title
+						&nbsp;
 					</h1>
 				</div>
 				<Form>
@@ -48,7 +46,9 @@ export const SkeletonCurrent = () => {
 						<InputGroup>
 							<Input disabled></Input>
 							<InputGroupAddon addonType='append'>
-								<Button>&nbsp;</Button>
+								<div className='add-item-btn-skeleton'>
+									&nbsp;
+								</div>
 							</InputGroupAddon>
 						</InputGroup>
 					</FormGroup>
@@ -68,12 +68,7 @@ export const SkeletonCurrent = () => {
 					</ListGroupItem>
 				</ListGroup>
 				<Container className='fixed fixed-bottom px-5 mb-5'>
-					<Button
-						className='submit-btn-skeleton my-5'
-						size='lg'
-						block>
-						&nbsp;
-					</Button>
+					<div className='submit-btn-skeleton my-5'>&nbsp;</div>
 				</Container>
 			</Container>
 		</Fragment>

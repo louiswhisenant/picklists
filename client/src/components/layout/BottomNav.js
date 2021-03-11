@@ -17,7 +17,7 @@ const BottomNav = ({ currentPicklist, picklists }) => {
 	);
 
 	return (
-		<Navbar className='bottom-nav navbar fixed-bottom'>
+		<Navbar className='bottom-nav navbar fixed-bottom' id='bottom-nav'>
 			<Nav>
 				<NavItem>
 					<Link to='/'>

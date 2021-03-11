@@ -8,15 +8,11 @@ import {
 	InputGroupAddon,
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import {
-	addPicklistItem,
-	updatePicklist,
-} from '../../../flux/actions/picklistActions';
-import { returnErrors } from '../../../flux/actions/errorActions';
+import { returnErrors } from '../../flux/actions/errorActions';
+import { updatePicklist } from '../../flux/actions/picklistActions';
 
-const AddPicklistItem = ({
-	currentPicklist,
-	addPicklistItem,
+const GetRetrieveItem = ({
+	retrievePicklist,
 	updatePicklist,
 	returnErrors,
 }) => {
@@ -24,7 +20,7 @@ const AddPicklistItem = ({
 
 	// Clear input after adding item and reset focus to input
 	const clearFields = () => {
-		const form = document.querySelector('#add-item-form');
+		const form = document.querySelector('#retrieve-item-form');
 		form.reset();
 		setUPC('');
 	};
@@ -34,20 +30,21 @@ const AddPicklistItem = ({
 	const handleOnSubmit = async (e) => {
 		e.preventDefault();
 
-		const duplicate = (item) => item.upcs.includes(upc);
+		const validUpc = (item) =>
+			item.upcs.includes(upc) && item.resolved === 'requested';
 
 		if (upc === '') {
 			returnErrors('UPC Input field cannot be blank', 'danger', null);
-		} else if (currentPicklist.items.some(duplicate)) {
-			// If the item scanned is a duplicate, increase qty by one and update
-			let picklistToUpdate = currentPicklist;
+		} else if (retrievePicklist.items.some(validUpc)) {
+			// If retrievePicklist contains item pertaining to scanned UPC
+			let picklistToUpdate = retrievePicklist;
 
 			picklistToUpdate.items = picklistToUpdate.items.filter((item) =>
-				item.upcs.includes(upc) ? item.qty++ : item
+				item.upcs.includes(upc) ? (item.resolved = 'retrieved') : item
 			);
 			updatePicklist(picklistToUpdate);
 		} else {
-			addPicklistItem(currentPicklist, upc);
+			returnErrors('Nothing to retrieve', 'danger', null);
 		}
 
 		// Clear Input Field
@@ -59,13 +56,13 @@ const AddPicklistItem = ({
 			<Form
 				onSubmit={(e) => handleOnSubmit(e)}
 				autoComplete='off'
-				id='add-item-form'>
+				id='retrieve-item-form'>
 				<FormGroup>
 					<InputGroup>
 						<Input
 							type='text'
 							name='upc'
-							id='item'
+							id='r-item'
 							placeholder='Input UPC or scan barcode...'
 							onChange={handleChangeUPC}
 							autoFocus></Input>
@@ -73,7 +70,7 @@ const AddPicklistItem = ({
 							<Button
 								onClick={(e) => handleOnSubmit(e)}
 								className='bg-1'>
-								Add Item
+								Retrieve Item
 							</Button>
 						</InputGroupAddon>
 					</InputGroup>
@@ -84,11 +81,10 @@ const AddPicklistItem = ({
 };
 
 const mapStateToProps = (state) => ({
-	currentPicklist: state.picklist.currentPicklist,
+	retrievePicklist: state.picklist.retrievePicklist,
 });
 
 export default connect(mapStateToProps, {
-	addPicklistItem,
 	updatePicklist,
 	returnErrors,
-})(AddPicklistItem);
+})(GetRetrieveItem);

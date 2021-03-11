@@ -8,6 +8,7 @@ import {
 } from '../../flux/actions/picklistActions';
 
 const AddToCurrent = ({
+	user,
 	currentPicklist,
 	updatePicklist,
 	getCurrentPicklist,
@@ -36,8 +37,8 @@ const AddToCurrent = ({
 	};
 
 	useEffect(() => {
-		getCurrentPicklist();
-	}, [updatePicklist, getCurrentPicklist]);
+		getCurrentPicklist(user._id, 'initialized');
+	}, [updatePicklist, user, getCurrentPicklist]);
 
 	return (
 		<div className='add-to-current bg-1 text-white'>
@@ -49,6 +50,7 @@ const AddToCurrent = ({
 };
 
 const mapStateToProps = (state) => ({
+	user: state.auth.user,
 	currentPicklist: state.picklist.currentPicklist,
 });
 

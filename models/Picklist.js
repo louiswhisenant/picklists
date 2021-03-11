@@ -13,6 +13,16 @@ const PicklistSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	retriever_id: {
+		type: String,
+		required: true,
+		default: 'unassigned',
+	},
+	retriever_name: {
+		type: String,
+		required: true,
+		default: 'unassigned',
+	},
 	items: [
 		{
 			name: {
@@ -44,6 +54,12 @@ const PicklistSchema = mongoose.Schema({
 			_id: {
 				type: String,
 				unique: false,
+			},
+			resolved: {
+				type: String,
+				enum: ['requested', 'retrieved', 'cancelled'],
+				required: true,
+				default: 'requested',
 			},
 		},
 	],

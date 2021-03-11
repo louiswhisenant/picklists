@@ -7,19 +7,27 @@ const { check, validationResult } = require('express-validator');
 const Picklist = require('../models/Picklist');
 
 // @route   GET api/picklists/:id
-// @desc    Get current picklist for specified user
+// @desc    Get unique status picklist for specified user
 // @access  Private
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id/:status', auth, async (req, res) => {
 	try {
-		const currentPicklist = await Picklist.findOne({
-			author_id: req.params.id,
-			status: 'initialized',
-		});
+		let statusPicklist;
+		if (req.params.status === 'initialized') {
+			statusPicklist = await Picklist.findOne({
+				author_id: req.params.id,
+				status: req.params.status,
+			});
+		} else if (req.params.status === 'retrieving') {
+			statusPicklist = await Picklist.findOne({
+				retriever_id: req.params.id,
+				status: req.params.status,
+			});
+		}
 
-		if (!currentPicklist) {
+		if (!statusPicklist) {
 			res.status(404).json({ msg: 'Picklist not found' });
 		} else {
-			res.status(200).json(currentPicklist);
+			res.status(200).json(statusPicklist);
 		}
 	} catch (err) {
 		console.error(err.message);
@@ -99,13 +107,15 @@ router.post(
 // @desc    Update Picklist
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-	const { items, list_name, status } = req.body;
+	const { items, list_name, status, retriever_id, retriever_name } = req.body;
 	// Build updatedData object
 	const updatedData = {};
 
 	if (list_name) updatedData.list_name = list_name;
 	if (items) updatedData.items = items;
 	if (status) updatedData.status = status;
+	if (retriever_id) updatedData.retriever_id = retriever_id;
+	if (retriever_name) updatedData.retriever_name = retriever_name;
 
 	try {
 		// Search picklists for picklist with id matching the params in the req

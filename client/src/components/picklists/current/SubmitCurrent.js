@@ -1,17 +1,10 @@
 import React, { Fragment } from 'react';
 import { Button, Container, Form } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import {
-	clearCurrentPicklist,
-	submitPicklist,
-} from '../../../flux/actions/picklistActions';
+import { updatePicklist } from '../../../flux/actions/picklistActions';
 import { connect } from 'react-redux';
 
-const SubmitCurrent = ({
-	currentPicklist,
-	submitPicklist,
-	clearCurrentPicklist,
-}) => {
+const SubmitCurrent = ({ currentPicklist, updatePicklist }) => {
 	const history = useHistory();
 
 	const handleSubmit = (e) => {
@@ -21,8 +14,7 @@ const SubmitCurrent = ({
 
 		picklistToSubmit.status = 'submitted';
 
-		submitPicklist(picklistToSubmit);
-		clearCurrentPicklist();
+		updatePicklist(picklistToSubmit);
 
 		history.push('/');
 	};
@@ -50,6 +42,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-	submitPicklist,
-	clearCurrentPicklist,
+	updatePicklist,
 })(SubmitCurrent);
