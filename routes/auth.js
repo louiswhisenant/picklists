@@ -2,14 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const auth = require('../middleware/auth');
 // Init express validator
 const { check, validationResult } = require('express-validator');
 // Require User model
 const User = require('../models/User');
 
-const { JWT_SECRET } = config;
 // @route   GET api/auth
 // @desc    Get logged in user
 // @access  Private
@@ -72,8 +70,7 @@ router.post(
 			// Create jwt token for authentication
 			jwt.sign(
 				payload,
-				// get secret from config default.json
-				JWT_SECRET,
+				`${process.env.JWT_SECRET_KEY}`,
 				{
 					// (optional) set expiration of token (24hrs)
 					expiresIn: 86400,
