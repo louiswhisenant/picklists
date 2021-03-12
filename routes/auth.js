@@ -9,6 +9,7 @@ const { check, validationResult } = require('express-validator');
 // Require User model
 const User = require('../models/User');
 
+const { JWT_SECRET } = config;
 // @route   GET api/auth
 // @desc    Get logged in user
 // @access  Private
@@ -72,7 +73,7 @@ router.post(
 			jwt.sign(
 				payload,
 				// get secret from config default.json
-				config.get('JWT_SECRET'),
+				JWT_SECRET,
 				{
 					// (optional) set expiration of token (24hrs)
 					expiresIn: 86400,
