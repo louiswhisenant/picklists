@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
 	// if there is a token...
 	try {
 		// ...use jsonwebtoken to verify the validity of token against the secret in the default.json config file
-		const decoded = jwt.verify(token, config.get('jwtSecret'));
+		const decoded = jwt.verify(token, config.get('JWT_SECRET'));
 		// If verified, set the req.user of API route to decoded.user...
 		req.user = decoded.user;
 		// ...continue with current route
