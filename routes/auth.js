@@ -70,7 +70,7 @@ router.post(
 			// Create jwt token for authentication
 			jwt.sign(
 				payload,
-				`${process.env.JWT_SECRET_KEY}`,
+				`${process.env.JWT_SECRET}`,
 				{
 					// (optional) set expiration of token (24hrs)
 					expiresIn: 86400,
