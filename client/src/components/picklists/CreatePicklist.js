@@ -11,23 +11,11 @@ import {
 } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-	getPicklists,
-	addPicklist,
-	getCurrentPicklist,
-} from '../../flux/actions/picklistActions';
+import { addPicklist } from '../../flux/actions/picklistActions';
 import { formatTimeCST } from '../utils/Date';
 import { logout } from '../../flux/actions/authActions';
 
-const CreatePicklist = ({
-	user,
-	picklists,
-	currentPicklist,
-	getPicklists,
-	addPicklist,
-	getCurrentPicklist,
-	logout,
-}) => {
+const CreatePicklist = ({ user, currentPicklist, addPicklist, logout }) => {
 	let history = useHistory();
 
 	const [modal, setModal] = useState(false);
@@ -124,8 +112,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-	getPicklists,
 	addPicklist,
-	getCurrentPicklist,
 	logout,
 })(CreatePicklist);

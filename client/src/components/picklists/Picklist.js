@@ -127,6 +127,13 @@ const Picklists = ({
 						{picklist.items.length > 0 ? (
 							picklist.items.map((item) => (
 								<li key={item._id}>
+									{item.resolved === 'requested' ? (
+										<i className='fas fa-search c-retrieving'></i>
+									) : item.resolved === 'retrieved' ? (
+										<i className='fas fa-check c-retrieved'></i>
+									) : (
+										<i className='fas fa-ban color-4'></i>
+									)}
 									{item.size && (
 										<strong className='picklist-body-size'>
 											{item.size}&nbsp;

@@ -63,23 +63,38 @@ const RetrieveItems = ({ retrievePicklist, updatePicklist, returnErrors }) => {
 	return (
 		<ListGroup className='retrieve-items-list'>
 			{picklist.items &&
-				picklist.items.map(({ _id, name, size, qty }) => (
-					<Fragment key={_id}>
+				picklist.items.map(({ _id, name, size, qty, resolved }) => (
+					<div className={`retrieve-item ${resolved}`} key={_id}>
 						<Collapse isOpen={isOpen === _id}>
 							<CardBody className='item-not-found'>
-								<Button
-									className='item-not-found-btn bg-1 mr-2'
-									size='sm'
-									name='cancel-btn'
-									onClick={(e) => handleCancel(e, _id)}>
-									<i className='fas fa-ban'></i> Not Found
-								</Button>
+								{resolved !== 'cancelled' ? (
+									<Button
+										className='item-not-found-btn bg-1'
+										size='sm'
+										name='cancel-btn'
+										onClick={(e) => handleCancel(e, _id)}>
+										<i className='fas fa-ban'></i> Not Found
+									</Button>
+								) : (
+									<div className='already-not-found'>
+										Item not found
+									</div>
+								)}
 							</CardBody>
 						</Collapse>
 
 						<ListGroupItem
 							onClick={() => handleToggle(_id)}
-							className='d-flex align-items-center text-dark'>
+							className={`d-flex align-items-center text-dark ${resolved}`}>
+							<div className='resolved-status'>
+								{resolved === 'requested' ? (
+									<i className='fas fa-search c-retrieving'></i>
+								) : resolved === 'retrieved' ? (
+									<i className='fas fa-check c-retrieved'></i>
+								) : (
+									<i className='fas fa-ban color-4'></i>
+								)}
+							</div>
 							<div className='retrieve-items-name'>
 								{size && (
 									<strong className='retrieve-items-size'>
@@ -94,17 +109,24 @@ const RetrieveItems = ({ retrievePicklist, updatePicklist, returnErrors }) => {
 						</ListGroupItem>
 
 						<Collapse isOpen={isOpen === _id}>
-							<CardBody className='retrieve-item'>
-								<Button
-									className='retrieve-item-btn'
-									onClick={(e) => {
-										handleRetrieve(e, _id);
-									}}>
-									<i className='fas fa-check'></i> Retrieve
-								</Button>
+							<CardBody className='retrieve-item-success'>
+								{resolved !== 'retrieved' ? (
+									<Button
+										className='retrieve-item-success-btn'
+										onClick={(e) => {
+											handleRetrieve(e, _id);
+										}}>
+										<i className='fas fa-check'></i>{' '}
+										Retrieve
+									</Button>
+								) : (
+									<div className='already-retrieved'>
+										Item Retrieved
+									</div>
+								)}
 							</CardBody>
 						</Collapse>
-					</Fragment>
+					</div>
 				))}
 		</ListGroup>
 	);
