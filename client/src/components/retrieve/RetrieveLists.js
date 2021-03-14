@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getPicklists } from '../../flux/actions/picklistActions';
 import Picklist from '../picklists/Picklist';
@@ -7,7 +7,7 @@ const RetrieveLists = ({ picklists, getPicklists }) => {
 	const submitted = (list) => list.status === 'submitted';
 
 	return (
-		<Fragment>
+		<div className='retrieve-lists'>
 			{picklists.some(submitted) ? (
 				picklists.map(
 					(list) =>
@@ -29,7 +29,7 @@ const RetrieveLists = ({ picklists, getPicklists }) => {
 					to refresh the current page.
 				</h3>
 			)}
-		</Fragment>
+		</div>
 	);
 };
 

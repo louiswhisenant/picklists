@@ -32,7 +32,7 @@ const Login = ({ isAuthenticated, error, login, clearErrors }) => {
 	}, [error, history, isAuthenticated]);
 
 	return (
-		<div className='container'>
+		<div className='container login'>
 			<div className='row m-auto'>
 				<Form onSubmit={handleOnSubmit} className='w-100'>
 					<FormGroup>

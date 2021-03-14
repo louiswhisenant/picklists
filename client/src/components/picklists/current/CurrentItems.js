@@ -65,7 +65,11 @@ const CurrentItems = ({ currentPicklist, updatePicklist }) => {
 		<ListGroup className='current-items-list'>
 			{picklist.items && picklist.items.length > 0 ? (
 				picklist.items.map(({ _id, name, size, qty }) => (
-					<Fragment key={_id}>
+					<div
+						key={_id}
+						className={`current-items-item ${
+							isOpen === _id && 'item-open'
+						}`}>
 						<Collapse isOpen={isOpen === _id}>
 							<CardBody className='current-items-item-options'>
 								<Button
@@ -141,7 +145,7 @@ const CurrentItems = ({ currentPicklist, updatePicklist }) => {
 								</div>
 							</CardBody>
 						</Collapse>
-					</Fragment>
+					</div>
 				))
 			) : (
 				<div>Scan or input a UPC to begin.</div>

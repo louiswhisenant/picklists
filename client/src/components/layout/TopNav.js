@@ -72,7 +72,7 @@ const TopNav = ({ auth }) => {
 
 	return (
 		<Fragment>
-			<div ref={node} className='mb-5 nav-anchor' id='top-nav'>
+			<div ref={node} className='nav-anchor' id='top-nav'>
 				<Navbar dark className='bg-1'>
 					<Container className='py-1'>
 						<Link to='/' onClick={() => setIsOpen(false)}>

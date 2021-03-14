@@ -39,7 +39,7 @@ const Library = ({
 					loading
 				)}
 			</Container>
-			<BottomNav />
+			<BottomNav active='library' />
 		</Fragment>
 	);
 };

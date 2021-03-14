@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'reactstrap';
 import CreatePicklist from '../picklists/CreatePicklist';
 
-const BottomNav = ({ currentPicklist, picklists }) => {
+const BottomNav = ({ currentPicklist, picklists, active }) => {
 	const newList = <CreatePicklist />;
 
 	const editList = (
@@ -19,7 +19,7 @@ const BottomNav = ({ currentPicklist, picklists }) => {
 	return (
 		<Navbar className='bottom-nav navbar fixed-bottom' id='bottom-nav'>
 			<Nav>
-				<NavItem>
+				<NavItem className={`home ${active === 'home' && 'active'}`}>
 					<Link to='/'>
 						<i className='fas fa-home i-super-anchor'>
 							<span className='i-super i-super-live picklist-count'>
@@ -31,14 +31,19 @@ const BottomNav = ({ currentPicklist, picklists }) => {
 						<span className='link-page-name'>Picklists</span>
 					</Link>
 				</NavItem>
-				<NavItem>{!currentPicklist ? newList : editList}</NavItem>
-				<NavItem>
+				<NavItem
+					className={`current ${active === 'current' && 'active'}`}>
+					{!currentPicklist ? newList : editList}
+				</NavItem>
+				<NavItem
+					className={`retrieve ${active === 'retrieve' && 'active'}`}>
 					<Link to='/retrieve'>
 						<i className='fas fa-cart-arrow-down i-super-anchor'></i>
 						<span className='link-page-name'>Retrieve</span>
 					</Link>
 				</NavItem>
-				<NavItem>
+				<NavItem
+					className={`library ${active === 'library' && 'active'}`}>
 					<Link to='/library'>
 						<i className='fas fa-book i-super-anchor'>
 							<i className='fas fa-plus i-super'></i>

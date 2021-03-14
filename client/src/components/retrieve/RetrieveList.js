@@ -11,15 +11,11 @@ const RetrieveList = ({ retrievePicklist }) => {
 		<Fragment>
 			{retrievePicklist ? (
 				<Container className='retrieve page-wrapper'>
-					<div className='retrieve-picklist-header'>
-						<h1 className='text-center retrieve-picklist-title'>
-							{retrievePicklist.list_name}
-						</h1>
-					</div>
-					<div>
-						<GetRetrieveItem />
-						<RetrieveItems />
-					</div>
+					<GetRetrieveItem />
+					<h1 className='text-center picklist-title'>
+						{retrievePicklist.list_name}
+					</h1>
+					<RetrieveItems />
 				</Container>
 			) : (
 				<Fragment>

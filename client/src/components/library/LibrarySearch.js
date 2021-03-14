@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
@@ -12,41 +12,36 @@ const LibrarySearch = ({
 	searchLibrary,
 	clearLibrarySearch,
 }) => {
-	const search = useRef('');
+	const [search, setSearch] = useState('');
 	const [newItemData, setNewItemData] = useState('');
 
-	useEffect(() => {
-		if (librarySearch === []) {
-			search.current.value = '';
-		}
-	}, [librarySearch]);
-
 	const handleOnChange = (e) => {
-		if (search.current.value !== '') {
+		setSearch(e.target.value);
+		if (e.target.value !== '') {
 			searchLibrary(e.target.value);
+			console.log('searching...');
 		} else {
 			clearLibrarySearch();
+			console.log('search cleared');
 		}
 
 		setNewItemData(e.target.value);
 	};
 
 	return (
-		<div className='library-search'>
-			<Form
-				onSubmit={(e) => e.preventDefault()}
-				autoComplete='off'
-				className='add-library-item-form'>
-				<FormGroup>
-					<Input
-						type='text'
-						name='search'
-						id='item'
-						ref={search}
-						placeholder='Enter Item Name or UPC...'
-						onChange={(e) => handleOnChange(e)}
-						autoFocus></Input>
-
+		<Form
+			onSubmit={(e) => e.preventDefault()}
+			autoComplete='off'
+			className='add-library-item-form search-bar'>
+			<FormGroup>
+				<Input
+					type='text'
+					name='search'
+					id='item'
+					placeholder='Enter Item Name or UPC...'
+					onChange={(e) => handleOnChange(e)}
+					autoFocus></Input>
+				{search !== '' && (
 					<div className='new-item-triggers'>
 						<LibraryItemForm
 							triggerName='New UPC Item'
@@ -57,9 +52,9 @@ const LibrarySearch = ({
 							newItemData={{ name: newItemData, upcs: [''] }}
 						/>
 					</div>
-				</FormGroup>
-			</Form>
-		</div>
+				)}
+			</FormGroup>
+		</Form>
 	);
 };
 

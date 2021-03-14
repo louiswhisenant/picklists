@@ -9,7 +9,7 @@ import {
 import { loadUser } from '../../flux/actions/authActions';
 import { SkeletonCard } from '../skeleton/Skeleton';
 import BottomNav from '../layout/BottomNav';
-import { Container, Button } from 'reactstrap';
+import { Container, Button, InputGroup } from 'reactstrap';
 
 const Home = ({
 	picklistLoading,
@@ -60,24 +60,30 @@ const Home = ({
 			<Container className='page-wrapper home'>
 				{user && !authLoading && !picklistLoading ? (
 					<Fragment>
-						<div className='status-filter-hud'>
-							<Button
-								className='status-filter-clear-btn'
-								value=''
-								onClick={(e) => handleStatusFilter(e)}>
-								<i className='fas fa-ban'></i>
-							</Button>
-							<select
-								className='form-select status-filter-select'
-								value={statusFilter.value}
-								onChange={(e) => handleStatusFilter(e)}>
-								<option value={''}>Filter by Status</option>
-								<option value='initialized'>Initialized</option>
-								<option value='submitted'>Submitted</option>
-								<option value='retrieving'>Retrieving</option>
-								<option value='retrieved'>Retrieved</option>
-								<option value='complete'>Complete</option>
-							</select>
+						<div className='status-filter-hud search-bar'>
+							<InputGroup>
+								<Button
+									className='status-filter-clear-btn'
+									value=''
+									onClick={(e) => handleStatusFilter(e)}>
+									<i className='fas fa-ban'></i>
+								</Button>
+								<select
+									className='form-control status-filter-select'
+									value={statusFilter.value}
+									onChange={(e) => handleStatusFilter(e)}>
+									<option value={''}>Filter by Status</option>
+									<option value='initialized'>
+										Initialized
+									</option>
+									<option value='submitted'>Submitted</option>
+									<option value='retrieving'>
+										Retrieving
+									</option>
+									<option value='retrieved'>Retrieved</option>
+									<option value='complete'>Complete</option>
+								</select>
+							</InputGroup>
 						</div>
 						{picklists.length > 0 ? (
 							picklists.map((list) =>
@@ -96,7 +102,7 @@ const Home = ({
 					loading
 				)}
 			</Container>
-			<BottomNav />
+			<BottomNav active='home' />
 		</Fragment>
 	);
 };

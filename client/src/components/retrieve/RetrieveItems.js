@@ -34,10 +34,15 @@ const RetrieveItems = ({ retrievePicklist, updatePicklist, returnErrors }) => {
 		updatePicklist(picklistToUpdate);
 	};
 
-	const handleRetrieve = (e, _id) => {
+	const handleRetrieve = (e, id) => {
 		e.preventDefault();
 
-		console.log('item retrieved');
+		let picklistToUpdate = retrievePicklist;
+
+		picklistToUpdate.items = picklistToUpdate.items.filter((item) =>
+			item._id === id ? (item.resolved = 'retrieved') : item
+		);
+		updatePicklist(picklistToUpdate);
 	};
 
 	useEffect(() => {

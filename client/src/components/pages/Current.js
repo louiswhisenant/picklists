@@ -27,16 +27,12 @@ const Current = ({
 		<Fragment>
 			{currentPicklist ? (
 				<Container className='current page-wrapper'>
-					<div className='current-picklist-header'>
-						<h1 className='text-center current-picklist-title'>
-							{currentPicklist.list_name}
-						</h1>
-					</div>
-					<div>
-						<AddPicklistItem />
-						<CurrentItems />
-						<SubmitCurrent />
-					</div>
+					<AddPicklistItem />
+					<h1 className='text-center picklist-title'>
+						{currentPicklist.list_name}
+					</h1>
+					<CurrentItems />
+					<SubmitCurrent />
 				</Container>
 			) : (
 				<Fragment>
@@ -44,7 +40,7 @@ const Current = ({
 					<BottomNav />
 				</Fragment>
 			)}
-			<BottomNav />
+			<BottomNav active='current' />
 		</Fragment>
 	);
 };

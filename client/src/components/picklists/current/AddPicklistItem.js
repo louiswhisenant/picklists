@@ -55,31 +55,30 @@ const AddPicklistItem = ({
 	};
 
 	return (
-		<div>
-			<Form
-				onSubmit={(e) => handleOnSubmit(e)}
-				autoComplete='off'
-				id='add-item-form'>
-				<FormGroup>
-					<InputGroup>
-						<Input
-							type='text'
-							name='upc'
-							id='item'
-							placeholder='Input UPC or scan barcode...'
-							onChange={handleChangeUPC}
-							autoFocus></Input>
-						<InputGroupAddon addonType='append'>
-							<Button
-								onClick={(e) => handleOnSubmit(e)}
-								className='bg-1'>
-								Add Item
-							</Button>
-						</InputGroupAddon>
-					</InputGroup>
-				</FormGroup>
-			</Form>
-		</div>
+		<Form
+			onSubmit={(e) => handleOnSubmit(e)}
+			autoComplete='off'
+			id='add-item-form'
+			className='add-picklist-item search-bar'>
+			<InputGroup>
+				<Input
+					type='text'
+					name='upc'
+					id='item'
+					placeholder='Input UPC or scan barcode...'
+					onChange={handleChangeUPC}
+					autoFocus></Input>
+				{upc !== '' && (
+					<InputGroupAddon addonType='append'>
+						<Button
+							onClick={(e) => handleOnSubmit(e)}
+							className='bg-1'>
+							Add Item
+						</Button>
+					</InputGroupAddon>
+				)}
+			</InputGroup>
+		</Form>
 	);
 };
 

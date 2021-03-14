@@ -64,7 +64,7 @@ const Retrieve = ({
 					loading
 				)}
 			</Container>
-			<BottomNav />
+			<BottomNav active='retrieve' />
 		</Fragment>
 	);
 };

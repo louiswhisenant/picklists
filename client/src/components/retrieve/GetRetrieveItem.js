@@ -52,31 +52,30 @@ const GetRetrieveItem = ({
 	};
 
 	return (
-		<div>
-			<Form
-				onSubmit={(e) => handleOnSubmit(e)}
-				autoComplete='off'
-				id='retrieve-item-form'>
-				<FormGroup>
-					<InputGroup>
-						<Input
-							type='text'
-							name='upc'
-							id='r-item'
-							placeholder='Input UPC or scan barcode...'
-							onChange={handleChangeUPC}
-							autoFocus></Input>
-						<InputGroupAddon addonType='append'>
-							<Button
-								onClick={(e) => handleOnSubmit(e)}
-								className='bg-1'>
-								Retrieve Item
-							</Button>
-						</InputGroupAddon>
-					</InputGroup>
-				</FormGroup>
-			</Form>
-		</div>
+		<Form
+			onSubmit={(e) => handleOnSubmit(e)}
+			autoComplete='off'
+			id='retrieve-item-form'
+			className='get-retrieve-item search-bar'>
+			<InputGroup>
+				<Input
+					type='text'
+					name='upc'
+					id='r-item'
+					placeholder='Input UPC or scan barcode...'
+					onChange={handleChangeUPC}
+					autoFocus></Input>
+				{upc !== '' && (
+					<InputGroupAddon addonType='append'>
+						<Button
+							onClick={(e) => handleOnSubmit(e)}
+							className='bg-1'>
+							Retrieve Item
+						</Button>
+					</InputGroupAddon>
+				)}
+			</InputGroup>
+		</Form>
 	);
 };
 

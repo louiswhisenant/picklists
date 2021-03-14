@@ -103,7 +103,7 @@ const Picklists = ({
 				onClick={() => handleToggle()}
 				className='picklist-header'>
 				<div className='picklist-info' ref={node}>
-					<h4 className='picklist-title'>{picklist.list_name}</h4>
+					<h4 className='picklist-name'>{picklist.list_name}</h4>
 					<h5 className='picklist-subtitle'>
 						<span className='picklist-subtitle-by'>by </span>
 						{picklist.author_name}
@@ -111,14 +111,16 @@ const Picklists = ({
 					<small className='picklist-date'>
 						{formatDateAndTimeCST(picklist.date)}
 					</small>
-					<div className={`status-dot bg-${picklist.status}`}></div>
-				</div>
-
-				{isOpen && (
-					<div className={`picklist-status bg-${picklist.status}`}>
-						{picklist.status.toUpperCase()}
+					<div
+						className={`status-dot bg-${picklist.status} ${
+							isOpen && 'status-dot-active'
+						}`}>
+						<div
+							className={`picklist-status bg-${picklist.status}`}>
+							{picklist.status.toUpperCase()}
+						</div>
 					</div>
-				)}
+				</div>
 			</CardBody>
 
 			<Collapse isOpen={isOpen} className='picklist-collapse-lower'>

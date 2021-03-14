@@ -41,18 +41,6 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-// @route   GET api/library/:name
-// @desc    Get library item by name
-// @access  Private
-
-//
-// Search library items and get list of items matching name search.
-//
-//
-//
-//
-//
-
 // @route   POST api/library
 // @desc    Add new library item
 // @access  Private
@@ -76,7 +64,7 @@ router.post(
 		}
 
 		// ...otherwise...
-		const { name, weight, desc, upcs } = req.body;
+		const { name, desc, upcs, size } = req.body;
 
 		try {
 			// Check Library Items for UPC
@@ -94,9 +82,9 @@ router.post(
 
 			newLibraryItem = new LibraryItem({
 				name,
-				weight,
 				desc,
 				upcs,
+				size,
 			});
 
 			const libraryItem = await newLibraryItem.save();
