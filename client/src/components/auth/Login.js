@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FormGroup, Input, Button, Form, Label, Alert } from 'reactstrap';
+import { FormGroup, Input, Button, Form, Label } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../flux/actions/authActions';
 import { clearErrors } from '../../flux/actions/errorActions';

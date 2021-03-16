@@ -2,7 +2,6 @@ import axios from 'axios';
 import { returnErrors } from './errorActions';
 import { tokenConfig } from './authActions';
 import {
-	GET_PICKLIST,
 	GET_PICKLISTS,
 	ADD_PICKLIST,
 	UPDATE_PICKLIST,
@@ -16,7 +15,6 @@ import {
 	CLEAR_FILTER,
 	PICKLISTS_LOADING,
 } from './types';
-import { bindActionCreators } from 'redux';
 
 // Get Picklists
 export const getPicklists = () => (dispatch, getState) => {

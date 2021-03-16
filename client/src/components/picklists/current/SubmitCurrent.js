@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Button, Container, Form, Collapse, CardBody, Card } from 'reactstrap';
+import { Button, Container, Collapse } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { updatePicklist } from '../../../flux/actions/picklistActions';
 import { connect } from 'react-redux';
