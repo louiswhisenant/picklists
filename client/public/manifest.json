@@ -1,6 +1,6 @@
 {
   "short_name": "Picklists",
-  "name": "Picklists - a C.O.I. application for efficient and precise recovery of high-velocity retail merchandise.",
+  "name": "Picklists - Control Opportunities in Inventory.",
   "icons": [
     {
       "src": "/assets/img/logo-48x48.png",
@@ -39,7 +39,9 @@
     }
   ],
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#4b4b4b",
-  "background_color": "#4b4b4b"
+  "background_color": "#4b4b4b",
+  "description": "A C.O.I. application for efficient and precise recovery of high-velocity retail merchandise.",
+  "developer": "Louis Whisenant"
 }

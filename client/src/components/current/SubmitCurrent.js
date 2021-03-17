@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Button, Container, Collapse } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { updatePicklist } from '../../../flux/actions/picklistActions';
+import { updatePicklist } from '../../flux/actions/picklistActions';
 import { connect } from 'react-redux';
 
 const SubmitCurrent = ({ currentPicklist, updatePicklist }) => {

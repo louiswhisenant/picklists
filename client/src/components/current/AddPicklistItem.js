@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { connect } from 'react-redux';
+import {
+	addPicklistItem,
+	updatePicklist,
+} from '../../flux/actions/picklistActions';
 import { returnErrors } from '../../flux/actions/errorActions';
-import { updatePicklist } from '../../flux/actions/picklistActions';
 
-const GetRetrieveItem = ({
-	retrievePicklist,
+const AddPicklistItem = ({
+	currentPicklist,
+	addPicklistItem,
 	updatePicklist,
 	returnErrors,
 }) => {
 	const [input, setInput] = useState('');
-	const [scan, setScan] = useState('');
-	const form = document.querySelector('#retrieve-item-form');
+	const [scan, setScan] = useState(null);
+	const form = document.querySelector('#add-item-form');
 
 	const handleKeypress = (e) => {
 		if (e.charCode === 13) {
@@ -30,21 +34,20 @@ const GetRetrieveItem = ({
 		e.preventDefault();
 		console.log(`submit ${data} from ${src}`);
 
-		const validUpc = (item) =>
-			item.upcs.includes(data) && item.resolved === 'requested';
+		const duplicate = (item) => item.upcs.includes(data);
 
 		if (data === '') {
 			returnErrors('No data entered', 'danger', null);
-		} else if (retrievePicklist.items.some(validUpc)) {
-			// If retrievePicklist contains item pertaining to scanned UPC
-			let picklistToUpdate = retrievePicklist;
+		} else if (currentPicklist.items.some(duplicate)) {
+			// If the item scanned is a duplicate, increase qty by one and update
+			let picklistToUpdate = currentPicklist;
 
 			picklistToUpdate.items = picklistToUpdate.items.filter((item) =>
-				item.upcs.includes(data) ? (item.resolved = 'retrieved') : item
+				item.upcs.includes(data) ? item.qty++ : item
 			);
 			updatePicklist(picklistToUpdate);
 		} else {
-			returnErrors('Nothing to retrieve', 'danger', null);
+			addPicklistItem(currentPicklist, data);
 		}
 
 		// Clear input field and state
@@ -55,7 +58,7 @@ const GetRetrieveItem = ({
 	};
 
 	useEffect(() => {
-		if (!document.querySelector('#retrieve-item-form').hasFocus) {
+		if (!document.querySelector('#add-item-form').hasFocus) {
 			document.addEventListener('keypress', handleKeypress);
 
 			return () => {
@@ -68,23 +71,25 @@ const GetRetrieveItem = ({
 		<Form
 			onSubmit={(e) => handleSubmit(e, input, 'form return')}
 			autoComplete='off'
-			id='retrieve-item-form'
-			className='get-retrieve-item search-bar'>
+			id='add-item-form'
+			className='add-picklist-item search-bar'>
 			<InputGroup>
 				<Input
 					type='text'
-					id='r-item'
+					id='item'
 					placeholder='Input UPC or scan barcode...'
 					onChange={handleChangeInput}
-					autoFocus></Input>
+					onBlur={() => {
+						setScan('');
+					}}></Input>
 				{input !== '' && (
 					<InputGroupAddon addonType='append'>
 						<Button
 							onClick={(e) =>
-								handleSubmit(e, input, 'Retrieve button')
+								handleSubmit(e, input, 'Add button')
 							}
 							className='bg-1'>
-							Retrieve Item
+							Add Item
 						</Button>
 					</InputGroupAddon>
 				)}
@@ -94,10 +99,11 @@ const GetRetrieveItem = ({
 };
 
 const mapStateToProps = (state) => ({
-	retrievePicklist: state.picklist.retrievePicklist,
+	currentPicklist: state.picklist.currentPicklist,
 });
 
 export default connect(mapStateToProps, {
+	addPicklistItem,
 	updatePicklist,
 	returnErrors,
-})(GetRetrieveItem);
+})(AddPicklistItem);

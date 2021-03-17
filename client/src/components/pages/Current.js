@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { Container } from 'reactstrap';
-import AddPicklistItem from '../picklists/current/AddPicklistItem';
-import CurrentItems from '../picklists/current/CurrentItems';
-import SubmitCurrent from '../picklists/current/SubmitCurrent';
+import AddPicklistItem from '../current/AddPicklistItem';
+import CurrentItems from '../current/CurrentItems';
+import SubmitCurrent from '../current/SubmitCurrent';
 import { connect } from 'react-redux';
 import { getCurrentPicklist } from '../../flux/actions/picklistActions';
 import { SkeletonCurrent } from '../skeleton/Skeleton';

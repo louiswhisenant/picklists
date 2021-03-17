@@ -16,7 +16,8 @@ router.get('/:upcs', auth, async (req, res) => {
 			upcs: req.params.upcs,
 		});
 
-		if (!libraryItem) res.status(404).json({ msg: 'UPC not found' });
+		if (!libraryItem)
+			res.status(404).json({ msg: `UPC ${req.params.upcs} not found` });
 
 		res.status(200).json(libraryItem);
 	} catch (err) {

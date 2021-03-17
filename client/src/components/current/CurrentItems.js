@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
 	ListGroup,
@@ -8,7 +8,7 @@ import {
 	CardBody,
 	Collapse,
 } from 'reactstrap';
-import { updatePicklist } from '../../../flux/actions/picklistActions';
+import { updatePicklist } from '../../flux/actions/picklistActions';
 
 const CurrentItems = ({ currentPicklist, updatePicklist }) => {
 	const [isOpen, setIsOpen] = useState('');

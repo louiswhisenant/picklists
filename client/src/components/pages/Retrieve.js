@@ -49,8 +49,6 @@ const Retrieve = ({
 		</Fragment>
 	);
 
-	// If the page is done loading, and there is no retrievePicklist, page should display only picklists with a status of 'submitted'. If there are no such picklists, page should display a message "There are no picklists ready to retrieve. To create or submit one, go to the create/current tab. To see all picklists, go to the picklists tab. Click here to refresh the current page."
-
 	return (
 		<Fragment>
 			<Container className='page-wrapper retrieve'>
