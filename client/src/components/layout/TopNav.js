@@ -82,7 +82,7 @@ const TopNav = ({ auth }) => {
 		<Fragment>
 			<div ref={node} className='nav-anchor' id='top-nav'>
 				<Navbar dark className='bg-1'>
-					<Container className='py-1'>
+					<div className='py-1 d-flex justify-content-space-between align-items-center w-100'>
 						<Link to='/' onClick={() => setIsOpen(false)}>
 							<i className='fas fa-home navbar-brand'></i>
 						</Link>
@@ -96,7 +96,7 @@ const TopNav = ({ auth }) => {
 							onClick={handleNavToggle}>
 							<i className='fas fa-ellipsis-v'></i>
 						</Button>
-					</Container>
+					</div>
 				</Navbar>
 				<Collapse isOpen={isOpen} navbar className='width'>
 					<Nav className='ml-auto' navbar>

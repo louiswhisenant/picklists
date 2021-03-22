@@ -4,8 +4,7 @@
   padding: 0; }
 
 html {
-  overflow-x: hidden;
-  overflow: scroll; }
+  overflow-x: hidden; }
 
 ::-webkit-scrollbar {
   width: 0;
@@ -232,7 +231,6 @@ select {
           bottom: -1.25rem;
           left: 0;
           right: 0;
-          margin: auto;
           font-size: 1rem;
           font-variant-caps: all-small-caps; }
       #bottom-nav .nav .nav-item.active.home {
