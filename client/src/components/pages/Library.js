@@ -6,7 +6,8 @@ import LibrarySearch from '../library/LibrarySearch';
 import { loadUser } from '../../flux/actions/authActions';
 import { getLibrary } from '../../flux/actions/libraryActions';
 import LibraryItems from '../library/LibraryItems';
-import { SkeletonCurrent } from '../skeleton/Skeleton';
+import { Spinner } from '../loading/Loading';
+import { getCurrentPicklist } from '../../flux/actions/picklistActions';
 
 const Library = ({
 	libraryLoading,
@@ -14,16 +15,18 @@ const Library = ({
 	authLoading,
 	loadUser,
 	getLibrary,
+	getCurrentPicklist,
 }) => {
 	// Load Library
 	useEffect(() => {
 		getLibrary();
+		getCurrentPicklist();
 		// eslint-ignore-next-line
-	}, [getLibrary]);
+	}, [getLibrary, getCurrentPicklist]);
 
 	const loading = (
 		<Fragment>
-			<SkeletonCurrent />
+			<Spinner />
 		</Fragment>
 	);
 
@@ -51,4 +54,8 @@ const mapStateToProps = (state) => ({
 	authLoading: state.auth.authLoading,
 });
 
-export default connect(mapStateToProps, { getLibrary, loadUser })(Library);
+export default connect(mapStateToProps, {
+	getLibrary,
+	loadUser,
+	getCurrentPicklist,
+})(Library);

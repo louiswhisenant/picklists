@@ -4,8 +4,8 @@
   padding: 0; }
 
 html {
-  overflow: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow: scroll; }
 
 ::-webkit-scrollbar {
   width: 0;
@@ -32,20 +32,22 @@ select {
   -moz-appearance: none;
   appearance: none;
   /* Remove default arrow */
-  background-image: url(assets/img/arrow-circle-down-solid.svg);
+  background-image: url(../img/arrow-circle-down-solid.svg);
   /* Add custom arrow */
   background-position: center right 2%;
   background-repeat: no-repeat;
   background-size: 1.75rem;
   font-size: 1.25rem;
   text-align: right;
-  text-indent: 0.5rem; }
+  text-indent: 0.5rem;
+  cursor: pointer; }
   select option {
     width: 50%;
     font-size: 1rem; }
 
 .page-wrapper {
-  margin-bottom: 8rem; }
+  height: calc(100vh - 8.5rem);
+  overflow: scroll; }
 
 .navbar-nav {
   display: flex;
@@ -141,37 +143,40 @@ select {
     z-index: 1;
     right: 0;
     width: 0;
-    height: 100vh;
+    height: calc(100vh - 8.5rem);
     background-color: #323232;
     display: none; }
     #top-nav .navbar-collapse.show {
       right: 0;
       width: initial;
-      height: 100vh;
+      height: calc(100vh - 8.5rem);
       display: initial; }
-  #top-nav ul li {
-    margin: 0; }
-    #top-nav ul li button {
-      background-color: #323232;
-      min-width: 10rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 0;
-      padding: 1rem; }
-      #top-nav ul li button:hover {
-        background-color: #a10000; }
-      #top-nav ul li button i {
-        margin-right: 0.5rem;
-        background-color: #b3b3b3;
-        border-radius: 50%;
-        padding: 0.5rem;
-        min-width: 2.2rem;
-        min-height: 2.2rem; }
+  #top-nav .navbar-nav {
+    height: 100%; }
+    #top-nav .navbar-nav .nav-item {
+      margin: 0; }
+      #top-nav .navbar-nav .nav-item button {
+        background-color: #323232;
+        min-width: 10rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0;
+        padding: 1rem; }
+        #top-nav .navbar-nav .nav-item button:hover {
+          background-color: #a10000; }
+        #top-nav .navbar-nav .nav-item button i {
+          margin-right: 0.5rem;
+          background-color: #b3b3b3;
+          border-radius: 50%;
+          padding: 0.5rem;
+          min-width: 2.2rem;
+          min-height: 2.2rem; }
+    #top-nav .navbar-nav .top-nav-settings {
+      margin-top: auto; }
 
 #bottom-nav {
   width: 100%;
-  margin-top: 2rem;
   padding: 0;
   background-color: #b3b3b3;
   box-shadow: 0 0 0.5rem #202020; }
@@ -184,6 +189,7 @@ select {
     #bottom-nav .nav .nav-item {
       width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center; }
       #bottom-nav .nav .nav-item:not(:last-child) {
@@ -283,6 +289,78 @@ select {
         outline: none;
         border: none; }
 
+.spinner-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .spinner-anchor .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px; }
+  .spinner-anchor .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #eeeeee;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #eeeeee transparent transparent transparent; }
+  .spinner-anchor .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s; }
+  .spinner-anchor .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s; }
+  .spinner-anchor .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s; }
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+.refresh-ring {
+  display: inline-block;
+  position: absolute;
+  top: 0.8rem;
+  right: 3.5rem;
+  width: 2rem;
+  height: 2rem;
+  animation: glow 10s ease-in infinte;
+  box-shadow: none; }
+
+.refresh-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0.2rem;
+  border: 0.2rem solid #eeeeee;
+  border-radius: 50%;
+  animation: refresh-ring 10s linear infinite;
+  border-color: transparent transparent transparent transparent; }
+
+.filler {
+  width: 0; }
+
+@keyframes refresh-ring {
+  0% {
+    transform: rotate(0deg);
+    border-color: transparent transparent transparent transparent; }
+  25% {
+    transform: rotate(90deg);
+    border-color: white transparent transparent transparent; }
+  50% {
+    transform: rotate(180deg);
+    border-color: white white transparent transparent; }
+  75% {
+    transform: rotate(270deg);
+    border-color: white white white transparent; }
+  100% {
+    transform: rotate(360deg);
+    border-color: white white white white; } }
 .search-bar {
   margin-bottom: 1rem; }
   .search-bar .input-group .form-control,
@@ -304,8 +382,7 @@ select {
 .home {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; }
+  align-items: center; }
   .home .status-filter-hud {
     display: flex;
     width: 100%; }
@@ -351,7 +428,8 @@ select {
         .picklist .picklist-header .picklist-info .picklist-subtitle .picklist-subtitle-by {
           color: #4b4b4b; }
       .picklist .picklist-header .picklist-info .picklist-date {
-        color: #b3b3b3; }
+        color: #b3b3b3;
+        display: block; }
       .picklist .picklist-header .picklist-info .status-dot {
         position: absolute;
         width: 1rem;
@@ -377,6 +455,10 @@ select {
           .picklist .picklist-header .picklist-info .status-dot.status-dot-active .picklist-status {
             display: initial;
             transition: all 0.2s ease; }
+      .picklist .picklist-header .picklist-info .complete-info {
+        display: none; }
+        .picklist .picklist-header .picklist-info .complete-info.complete-info-active {
+          display: initial; }
     .picklist .picklist-header.picklist-open {
       transition: all 0.2s ease; }
       .picklist .picklist-header.picklist-open .picklist-name {
@@ -412,7 +494,8 @@ select {
           margin-left: auto; }
 
 .picklist-skeleton {
-  animation: skeleton 2s linear infinite alternate; }
+  animation: skeleton 2s linear infinite alternate;
+  margin-top: 1rem; }
   .picklist-skeleton .card-body-skeleton .picklist-info-skeleton .card-title-skeleton {
     width: 100%;
     background-color: #737373;
@@ -433,7 +516,7 @@ select {
     width: 5rem; }
 
 .current .submit-current-trigger {
-  position: fixed;
+  position: absolute;
   width: 4rem;
   height: 4rem;
   box-shadow: 0 0 0.75rem 0 #202020;
@@ -446,7 +529,7 @@ select {
   z-index: 1031;
   background-color: #126c83; }
 .current .submit-current-collapse {
-  position: fixed;
+  position: absolute;
   width: 100%;
   padding: 0 4rem;
   bottom: 8rem; }
@@ -506,20 +589,8 @@ select {
 
 .current-picklist-skeleton {
   animation: skeleton 2s linear infinite alternate; }
-  .current-picklist-skeleton .current-header-skeleton {
-    position: relative;
-    height: 1rem; }
-    .current-picklist-skeleton .current-header-skeleton .current-title-skeleton {
-      background-color: #eeeeee;
-      font-weight: 100;
-      font-size: 1.75rem;
-      width: 50%;
-      position: absolute;
-      top: -2.5rem;
-      left: 50%;
-      transform: translateX(-50%); }
   .current-picklist-skeleton form .input-group-append .add-item-btn-skeleton {
-    width: 6rem;
+    width: 8rem;
     background-color: #b3b3b3; }
   .current-picklist-skeleton .list-group {
     border-radius: 0; }
@@ -536,9 +607,6 @@ select {
       .current-picklist-skeleton .list-group .list-group-item .qty-skeleton {
         background-color: #4b4b4b;
         width: 2.5rem; }
-  .current-picklist-skeleton .submit-btn-skeleton {
-    background-color: #b3b3b3;
-    height: 3rem; }
 
 .retrieve .retrieve-lists {
   margin-top: 1rem; }

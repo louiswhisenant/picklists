@@ -51,6 +51,7 @@ const PicklistUpper = ({
 	const handleComplete = (picklist) => {
 		let picklistToComplete = picklist;
 
+		picklist.date_completed = Date.now();
 		picklist.status = 'complete';
 
 		updatePicklist(picklistToComplete);

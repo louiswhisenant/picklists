@@ -50,9 +50,7 @@ const LibraryItems = ({
 								isOpen={isOpen === libraryItem._id}
 								className='library-item-collapse-upper'>
 								<CardBody>
-									{/* Fix AddToCurrent so it doesn't add duplicates */}
-									{currentPicklist ===
-										'a working component' && (
+									{currentPicklist && (
 										<AddToCurrent itemToAdd={libraryItem} />
 									)}
 									<div>

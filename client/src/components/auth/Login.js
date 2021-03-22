@@ -2,30 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { FormGroup, Input, Button, Form, Label } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../flux/actions/authActions';
-import { clearErrors } from '../../flux/actions/errorActions';
 import { connect } from 'react-redux';
 
-const Login = ({ isAuthenticated, error, login, clearErrors }) => {
+const Login = ({ isAuthenticated, error, login }) => {
 	let history = useHistory();
 
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [user, setUser] = useState({ email: '', password: '' });
 
-	// COMBINE TO ONE FUNCTION
-	const handleChangeEmail = (e) => setEmail(e.target.value);
-	const handleChangePassword = (e) => setPassword(e.target.value);
+	const handleChange = (e) => {
+		setUser({
+			...user,
+			[e.target.name]: e.target.value,
+		});
+	};
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
-
-		const user = { email, password };
 
 		// Attempt to login
 		login(user);
 	};
 
 	useEffect(() => {
-		// if authneticated, push to home
+		// if authenticated, push to home
 		if (isAuthenticated) {
 			history.push('/');
 		}
@@ -44,8 +43,9 @@ const Login = ({ isAuthenticated, error, login, clearErrors }) => {
 							placeholder='Use "test@test.com"'
 							className='mb-3'
 							onChange={(e) => {
-								handleChangeEmail(e);
+								handleChange(e);
 							}}
+							autoComplete='off'
 						/>
 
 						<Label for='password'>Password</Label>
@@ -56,7 +56,7 @@ const Login = ({ isAuthenticated, error, login, clearErrors }) => {
 							placeholder='Use "password"'
 							className='mb-3'
 							onChange={(e) => {
-								handleChangePassword(e);
+								handleChange(e);
 							}}
 						/>
 
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => ({
 	error: state.error,
 });
 
-export default connect(mapStateToProps, { login, clearErrors })(Login);
+export default connect(mapStateToProps, { login })(Login);

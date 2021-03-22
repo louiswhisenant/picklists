@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import BottomNav from '../layout/BottomNav';
 import GetRetrieveItem from './GetRetrieveItem';
 import RetrieveItems from './RetrieveItems';
-import { SkeletonCurrent } from '../skeleton/Skeleton';
 import { Container } from 'reactstrap';
+import { Spinner } from '../loading/Loading';
 
 const RetrieveList = ({ retrievePicklist }) => {
 	return (
@@ -19,7 +19,7 @@ const RetrieveList = ({ retrievePicklist }) => {
 				</Container>
 			) : (
 				<Fragment>
-					<SkeletonCurrent />
+					<Spinner />
 					<BottomNav />
 				</Fragment>
 			)}

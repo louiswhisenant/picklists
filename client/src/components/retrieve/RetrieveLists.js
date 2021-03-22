@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getPicklists } from '../../flux/actions/picklistActions';
 import Picklist from '../picklists/picklist/Picklist';
+import Timer from '../utils/Timer';
 
 const RetrieveLists = ({ picklists, getPicklists }) => {
 	const submitted = (list) => list.status === 'submitted';
 
+	useEffect(() => {
+		const refresh = setTimeout(() => {
+			getPicklists();
+		}, 10000);
+
+		return () => {
+			clearTimeout(refresh);
+		};
+	}, [getPicklists]);
+
 	return (
 		<div className='retrieve-lists'>
+			<Timer />
 			{picklists.some(submitted) ? (
 				picklists.map(
 					(list) =>

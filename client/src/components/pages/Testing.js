@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
-import { SkeletonCurrent } from '../skeleton/Skeleton';
+import { Spinner } from '../loading/Loading';
+import Timer from '../utils/Timer';
 
 const Testing = () => {
 	const loading = (
 		<Fragment>
-			<SkeletonCurrent />
+			<Timer />
+			<Spinner />
 		</Fragment>
 	);
 

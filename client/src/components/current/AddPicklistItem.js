@@ -14,7 +14,7 @@ const AddPicklistItem = ({
 	returnErrors,
 }) => {
 	const [input, setInput] = useState('');
-	const [scan, setScan] = useState(null);
+	const [scan, setScan] = useState('');
 	const form = document.querySelector('#add-item-form');
 
 	const handleKeypress = (e) => {

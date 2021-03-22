@@ -34,14 +34,9 @@ export const SkeletonCard = () => {
 export const SkeletonCurrent = () => {
 	return (
 		<Fragment>
-			<Container className='current-picklist-skeleton'>
-				<div className='current-header-skeleton'>
-					<h1 className='text-center current-title-skeleton'>
-						&nbsp;
-					</h1>
-				</div>
+			<Container className='page-wrapper current-picklist-skeleton'>
 				<Form>
-					<FormGroup>
+					<FormGroup className='search-bar'>
 						<InputGroup>
 							<Input disabled></Input>
 							<InputGroupAddon addonType='append'>
@@ -66,10 +61,20 @@ export const SkeletonCurrent = () => {
 						<p className='qty-skeleton'>&nbsp;</p>
 					</ListGroupItem>
 				</ListGroup>
-				<Container className='fixed fixed-bottom px-5 mb-5'>
-					<div className='submit-btn-skeleton my-5'>&nbsp;</div>
-				</Container>
 			</Container>
 		</Fragment>
+	);
+};
+
+export const Spinner = () => {
+	return (
+		<Container className='page-wrapper spinner-anchor'>
+			<div className='lds-ring'>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</Container>
 	);
 };

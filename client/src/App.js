@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Styling
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './assets/css/App.css';
 
 // Components
 import TopNav from './components/layout/TopNav';
@@ -16,6 +16,8 @@ import Library from './components/pages/Library';
 import Retrieve from './components/pages/Retrieve';
 import Login from './components/auth/Login';
 import { About } from './components/pages/About';
+import AlertHandler from './components/layout/AlertHandler';
+import Settings from './components/pages/Settings';
 
 // Remove prior to deployment
 import Testing from './components/pages/Testing';
@@ -24,7 +26,6 @@ import Testing from './components/pages/Testing';
 import { Provider } from 'react-redux';
 import store from './flux/store';
 import { loadUser } from './flux/actions/authActions';
-import AlertHandler from './components/layout/AlertHandler';
 
 const App = () => {
 	useEffect(() => {
@@ -46,6 +47,7 @@ const App = () => {
 					<Route exact path='/testing' component={Testing} />
 					<Route exact path='/login' component={Login} />
 					<Route exact path='/about' component={About} />
+					<Route exact path='/settings' component={Settings} />
 				</Switch>
 			</Router>
 		</Provider>

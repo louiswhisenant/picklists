@@ -18,3 +18,10 @@ export const formatTimeCST = (dateString) => {
 	};
 	return new Date(dateString).toLocaleDateString(undefined, options);
 };
+
+export const timeTaken = (dateCreated, dateCompleted) => {
+	const start = new Date(dateCreated).valueOf();
+	const end = new Date(dateCompleted).valueOf();
+	const elapsed = end - start;
+	return Math.floor(elapsed / 1000);
+};

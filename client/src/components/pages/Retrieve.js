@@ -5,7 +5,7 @@ import {
 	getRetrievePicklist,
 } from '../../flux/actions/picklistActions';
 import { loadUser } from '../../flux/actions/authActions';
-import { SkeletonCard } from '../skeleton/Skeleton';
+import { Spinner } from '../loading/Loading';
 import BottomNav from '../layout/BottomNav';
 import { Container } from 'reactstrap';
 import RetrieveLists from '../retrieve/RetrieveLists';
@@ -41,13 +41,7 @@ const Retrieve = ({
 		// eslint-disable-next-line
 	}, [user, getRetrievePicklist]);
 
-	const loading = (
-		<Fragment>
-			<SkeletonCard />
-			<SkeletonCard />
-			<SkeletonCard />
-		</Fragment>
-	);
+	const loading = <Spinner />;
 
 	return (
 		<Fragment>

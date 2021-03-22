@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, Fragment } from 'react';
 import { Collapse, CardBody, Card } from 'reactstrap';
-import { formatDateAndTimeCST } from '../../utils/Date';
+import { formatDateAndTimeCST, timeTaken } from '../../utils/Date';
 import PicklistUpper from './PicklistUpper';
 import PicklistLower from './PicklistLower';
 
@@ -40,12 +40,39 @@ const Picklists = ({ picklist }) => {
 				<div className='picklist-info' ref={node}>
 					<h4 className='picklist-name'>{picklist.list_name}</h4>
 					<h5 className='picklist-subtitle'>
-						<span className='picklist-subtitle-by'>by </span>
+						<span className='picklist-subtitle-by'>
+							Created by{' '}
+						</span>
 						{picklist.author_name}
 					</h5>
-					<small className='picklist-date'>
-						{formatDateAndTimeCST(picklist.date)}
+					<small className='picklist-date date-created'>
+						<i className='fas fa-pen'></i>{' '}
+						{formatDateAndTimeCST(picklist.date_created)}
 					</small>
+					{picklist.date_completed && (
+						<div
+							className={`complete-info ${
+								isOpen && 'complete-info-active'
+							}`}>
+							<h5 className='picklist-subtitle'>
+								<span className='picklist-subtitle-by'>
+									Retrieved by{' '}
+								</span>
+								{picklist.retriever_name}
+							</h5>
+							<small className='picklist-date date-completed'>
+								<i className='fas fa-check'></i>{' '}
+								{formatDateAndTimeCST(picklist.date_completed)}
+							</small>
+							<small className='picklist-date time-taken'>
+								<i className='fas fa-stopwatch'></i>{' '}
+								{timeTaken(
+									picklist.date_created,
+									picklist.date_completed
+								)}
+							</small>
+						</div>
+					)}
 					<div
 						className={`status-dot bg-${picklist.status} ${
 							isOpen && 'status-dot-active'

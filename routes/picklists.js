@@ -107,7 +107,14 @@ router.post(
 // @desc    Update Picklist
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-	const { items, list_name, status, retriever_id, retriever_name } = req.body;
+	const {
+		items,
+		list_name,
+		status,
+		retriever_id,
+		retriever_name,
+		date_completed,
+	} = req.body;
 	// Build updatedData object
 	const updatedData = {};
 
@@ -116,6 +123,7 @@ router.put('/:id', auth, async (req, res) => {
 	if (status) updatedData.status = status;
 	if (retriever_id) updatedData.retriever_id = retriever_id;
 	if (retriever_name) updatedData.retriever_name = retriever_name;
+	if (date_completed) updatedData.date_completed = date_completed;
 
 	try {
 		// Search picklists for picklist with id matching the params in the req

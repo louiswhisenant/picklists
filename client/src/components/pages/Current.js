@@ -5,8 +5,8 @@ import CurrentItems from '../current/CurrentItems';
 import SubmitCurrent from '../current/SubmitCurrent';
 import { connect } from 'react-redux';
 import { getCurrentPicklist } from '../../flux/actions/picklistActions';
-import { SkeletonCurrent } from '../skeleton/Skeleton';
 import BottomNav from '../layout/BottomNav';
+import { Spinner } from '../loading/Loading';
 
 const Current = ({
 	user,
@@ -36,7 +36,7 @@ const Current = ({
 				</Container>
 			) : (
 				<Fragment>
-					<SkeletonCurrent />
+					<Spinner />
 					<BottomNav />
 				</Fragment>
 			)}

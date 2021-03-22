@@ -3,6 +3,7 @@ import { Collapse, Navbar, Nav, NavItem, Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Logout from '../auth/Logout';
 import { connect } from 'react-redux';
+import Settings from '../pages/Settings';
 
 const TopNav = ({ auth }) => {
 	const node = useRef(null);
@@ -30,22 +31,29 @@ const TopNav = ({ auth }) => {
 
 	const authLinks = (
 		<Fragment>
-			<NavItem>
+			<NavItem className='top-nav-testing'>
 				<Link to='/testing' onClick={() => setIsOpen(false)}>
 					<Button>
 						<i className='fas fa-vial'></i> <span>Testing</span>
 					</Button>
 				</Link>
 			</NavItem>
-			<NavItem>
+			<NavItem className='top-nav-about'>
 				<Link to='/about' onClick={() => setIsOpen(false)}>
 					<Button>
 						<i className='fas fa-info'></i> <span>About</span>
 					</Button>
 				</Link>
 			</NavItem>
-			<NavItem>
+			<NavItem className='top-nav-logout'>
 				<Logout />
+			</NavItem>
+			<NavItem className='top-nav-settings'>
+				<Link to='/settings' onClick={() => setIsOpen(false)}>
+					<Button>
+						<i className='fas fa-cog'></i> <span>Settings</span>
+					</Button>
+				</Link>
 			</NavItem>
 		</Fragment>
 	);

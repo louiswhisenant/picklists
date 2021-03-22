@@ -75,10 +75,14 @@ const PicklistSchema = mongoose.Schema({
 		required: true,
 		default: 'initialized',
 	},
-	date: {
+	date_created: {
 		type: Date,
 		required: true,
 		default: Date.now(),
+	},
+	date_completed: {
+		type: Date,
+		required: false,
 	},
 });
 

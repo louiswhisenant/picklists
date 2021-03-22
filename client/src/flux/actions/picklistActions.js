@@ -30,7 +30,7 @@ export const getPicklists = () => (dispatch, getState) => {
 		.catch((err) =>
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[getPicklists] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -52,7 +52,7 @@ export const addPicklist = (picklist) => (dispatch, getState) => {
 		.catch((err) =>
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[addPicklist] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -87,7 +87,7 @@ export const addPicklistItem = (picklist, upc) => (dispatch, getState) => {
 		.catch((err) => {
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[addPicklistItem] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -121,7 +121,7 @@ export const updatePicklist = (picklist) => (dispatch, getState) => {
 		.catch((err) => {
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[updatePicklist] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -148,7 +148,7 @@ export const submitPicklist = (picklist) => (dispatch, getState) => {
 		.catch((err) => {
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[submitPicklist] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -169,7 +169,7 @@ export const deletePicklist = (id) => (dispatch, getState) => {
 		.catch((err) =>
 			dispatch(
 				returnErrors(
-					err.response.data.msg,
+					`[deletePicklist] ${err.response.data.msg}`,
 					'danger',
 					err.response.status
 				)
@@ -189,13 +189,16 @@ export const getCurrentPicklist = (id, status) => (dispatch, getState) => {
 			})
 		)
 		.catch((err) => {
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			);
+			if (err.response.status !== 404) {
+				console.log(`${err.response.status}`);
+				dispatch(
+					returnErrors(
+						`[getCurrentPicklist] ${err.response.data.msg}`,
+						'danger',
+						err.response.status
+					)
+				);
+			}
 		});
 };
 
@@ -216,13 +219,15 @@ export const getRetrievePicklist = (id, status) => (dispatch, getState) => {
 			})
 		)
 		.catch((err) => {
-			dispatch(
-				returnErrors(
-					err.response.data.msg,
-					'danger',
-					err.response.status
-				)
-			);
+			if (err.response.status !== 404) {
+				dispatch(
+					returnErrors(
+						`[getRetrievePicklist] ${err.response.data.msg}`,
+						'danger',
+						err.response.status
+					)
+				);
+			}
 		});
 };
 

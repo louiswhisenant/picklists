@@ -15,6 +15,7 @@ import {
 	addLibraryItem,
 	updateLibraryItem,
 	clearLibrarySearch,
+	getLibrary,
 } from '../../flux/actions/libraryActions';
 import AlertHandler from '../layout/AlertHandler';
 import { returnErrors } from '../../flux/actions/errorActions';
@@ -23,6 +24,7 @@ const LibraryItemForm = ({
 	addLibraryItem,
 	updateLibraryItem,
 	clearLibrarySearch,
+	getLibrary,
 	triggerName,
 	newItemData,
 	returnErrors,
@@ -82,6 +84,7 @@ const LibraryItemForm = ({
 
 			// Clear Current to reset edit state and forms
 			clearLibrarySearch();
+			getLibrary();
 			handleToggle();
 		}
 	};
@@ -250,5 +253,6 @@ export default connect(mapStateToProps, {
 	addLibraryItem,
 	updateLibraryItem,
 	clearLibrarySearch,
+	getLibrary,
 	returnErrors,
 })(LibraryItemForm);

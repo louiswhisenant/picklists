@@ -17,8 +17,9 @@ const AddToCurrent = ({
 }) => {
 	const handleClick = () => {
 		let picklistToUpdate = currentPicklist;
+		const id = (item) => item._id === itemToAdd._id;
 
-		if (picklistToUpdate.items.includes(itemToAdd)) {
+		if (picklistToUpdate.items.some(id)) {
 			returnErrors(
 				`${picklistToUpdate.list_name} already has ${itemToAdd.name}. To change quantities, go to current.`,
 				'danger',
@@ -36,16 +37,14 @@ const AddToCurrent = ({
 		}
 	};
 
-	useEffect(() => {
-		getCurrentPicklist(user._id, 'initialized');
-	}, [updatePicklist, user, getCurrentPicklist]);
-
 	return (
-		<div className='add-to-current bg-1 text-white'>
-			<Button className='add-to-current-btn' onClick={handleClick}>
-				<i className='fas fa-plus'></i> Add to Current Picklist
-			</Button>
-		</div>
+		currentPicklist && (
+			<div className='add-to-current bg-1 text-white'>
+				<Button className='add-to-current-btn' onClick={handleClick}>
+					<i className='fas fa-plus'></i> Add to Current Picklist
+				</Button>
+			</div>
+		)
 	);
 };
 

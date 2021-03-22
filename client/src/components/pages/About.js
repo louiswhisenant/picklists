@@ -39,9 +39,13 @@ export const About = () => {
 			<p>
 				<strong>Version:</strong> 1.0.0
 			</p>
+			<h4>Attributions</h4>
 			<p>
-				Icons attribution:{' '}
-				<a href='https://fontawesome.com/'>Font Awesome</a>
+				Icons: <a href='https://fontawesome.com/'>Font Awesome</a>
+			</p>
+			<p>
+				Loading Spinner:{' '}
+				<a href='https://loading.io/css/'>loading.io</a>
 			</p>
 		</div>
 	);
