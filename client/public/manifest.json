@@ -3,7 +3,7 @@
   "name": "Picklists - Control Opportunities in Inventory.",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/assets/img/logo.svg",
       "sizes": "48x48 72x72 96x96 128x128 256x256 384x384 512x512",
       "purpose": "maskable any"
     }

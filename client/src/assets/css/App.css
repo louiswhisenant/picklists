@@ -70,28 +70,25 @@ select {
   background-color: #a10000; }
 
 .bg-initialized {
-  background-color: #7397af;
-  box-shadow: 0 0 0.5rem #7397af;
-  color: #292929;
-  opacity: 0.8; }
+  background-color: #e5ebf0;
+  border: 0.2rem solid #7397af;
+  color: #292929; }
 
 .bg-submitted {
   background-color: #067d9b; }
 
 .bg-retrieving {
-  background-color: #d19945;
-  box-shadow: 0 0 0.25rem #d19945;
-  color: #292929;
-  opacity: 0.8; }
+  background-color: #f4e7d4;
+  border: 0.2rem solid #d19945;
+  color: #292929; }
 
 .bg-retrieved {
   background-color: #e06c00; }
 
 .bg-stocking {
-  background-color: #4fc25b;
-  box-shadow: 0 0 0.25rem #4fc25b;
-  color: #292929;
-  opacity: 0.8; }
+  background-color: #d4f0d7;
+  border: 0.2rem solid #4fc25b;
+  color: #292929; }
 
 .bg-complete {
   background-color: #00750a; }
