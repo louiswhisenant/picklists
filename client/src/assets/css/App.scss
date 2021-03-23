@@ -9,11 +9,22 @@ $dark: #4b4b4b;
 
 $shadow: #202020;
 
-$initialized: #eeeeee;
-$submitted: #126c83;
-$retrieving: #d36600;
-$retrieved: #0c7214;
-$complete: #2e2e2e;
+// $initialized: #eeeeee;
+// $submitted: #126c83;
+// $retrieving: #d36600;
+// $retrieved: #0c7214;
+// $complete: #2e2e2e;
+
+$initialized: #7397af;
+$submitted: #067d9b;
+$retrieving: #d19945;
+$retrieved: #e06c00;
+$stocking: #4fc25b;
+$complete: #00750a;
+
+$requested: #e06c00;
+$found: #06720f;
+$not-found: #a10000;
 
 // -------------- General Selectors -------------- //
 
@@ -105,7 +116,9 @@ select {
 
 .bg-initialized {
 	background-color: $initialized;
-	color: $dark;
+	box-shadow: 0 0 0.5rem $initialized;
+	color: $color-1;
+	opacity: 0.8;
 }
 
 .bg-submitted {
@@ -114,15 +127,24 @@ select {
 
 .bg-retrieving {
 	background-color: $retrieving;
+	box-shadow: 0 0 0.25rem $retrieving;
+	color: $color-1;
+	opacity: 0.8;
 }
 
 .bg-retrieved {
 	background-color: $retrieved;
 }
 
+.bg-stocking {
+	background-color: $stocking;
+	box-shadow: 0 0 0.25rem $stocking;
+	color: $color-1;
+	opacity: 0.8;
+}
+
 .bg-complete {
 	background-color: $complete;
-	border: 0.1rem solid $color-3;
 }
 
 .c-initialized {
@@ -143,6 +165,18 @@ select {
 
 .c-complete {
 	color: $complete;
+}
+
+.c-requested {
+	color: $requested;
+}
+
+.c-found {
+	color: $found;
+}
+
+.c-not-found {
+	color: $not-found;
 }
 
 // -------------- Bootstrap Overrides  -------------- //
@@ -338,10 +372,10 @@ select {
 					border-bottom: 0.5rem solid $submitted;
 				}
 				&.retrieve {
-					border-bottom: 0.5rem solid $retrieving;
+					border-bottom: 0.5rem solid $retrieved;
 				}
 				&.library {
-					border-bottom: 0.5rem solid $retrieved;
+					border-bottom: 0.5rem solid $complete;
 				}
 				a {
 					line-height: 4rem;
@@ -481,32 +515,30 @@ select {
 	border-color: transparent transparent transparent transparent;
 }
 
-.filler {
-	width: 0;
+.refresh-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0.25rem;
+	display: flex;
+	justify-content: flex-start;
+
+	.bar-filler {
+		width: 100%;
+		height: 100%;
+		background-color: $color-2;
+		opacity: 0.1;
+		animation: bar-timer 10s linear;
+	}
 }
-@keyframes refresh-ring {
+
+@keyframes bar-timer {
 	0% {
-		transform: rotate(0deg);
-		border-color: transparent transparent transparent transparent;
-	}
-	25% {
-		transform: rotate(90deg);
-		border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
-	}
-	50% {
-		transform: rotate(180deg);
-		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1) transparent
-			transparent;
-	}
-	75% {
-		transform: rotate(270deg);
-		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
-			rgba(255, 255, 255, 1) transparent;
+		width: 100%;
 	}
 	100% {
-		transform: rotate(360deg);
-		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
-			rgba(255, 255, 255, 1) rgba(255, 255, 255, 1);
+		width: 0%;
 	}
 }
 
@@ -757,6 +789,7 @@ select {
 		width: 100%;
 		padding: 0 4rem;
 		bottom: 8rem;
+		left: 0;
 
 		.submit-current-btn {
 			background-color: $submitted;
@@ -1096,5 +1129,31 @@ select {
 	}
 	100% {
 		opacity: 0.75;
+	}
+}
+
+@keyframes refresh-ring {
+	0% {
+		transform: rotate(0deg);
+		border-color: transparent transparent transparent transparent;
+	}
+	25% {
+		transform: rotate(90deg);
+		border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
+	}
+	50% {
+		transform: rotate(180deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1) transparent
+			transparent;
+	}
+	75% {
+		transform: rotate(270deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+			rgba(255, 255, 255, 1) transparent;
+	}
+	100% {
+		transform: rotate(360deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+			rgba(255, 255, 255, 1) rgba(255, 255, 255, 1);
 	}
 }

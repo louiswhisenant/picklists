@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # Sass
-# App.scss
+/assets/css/App.scss
+/assets/css/_settings.scss

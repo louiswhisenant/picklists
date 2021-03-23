@@ -78,6 +78,7 @@ const Home = ({
 									<option value={'retrieved'}>
 										Retrieved
 									</option>
+									<option value={'stocking'}>Stocking</option>
 									<option value={'complete'}>Complete</option>
 								</select>
 							</InputGroup>

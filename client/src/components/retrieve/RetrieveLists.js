@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getPicklists } from '../../flux/actions/picklistActions';
 import Picklist from '../picklists/picklist/Picklist';
-import Timer from '../utils/Timer';
+import { BarTimer } from '../utils/Timer';
 
 const RetrieveLists = ({ picklists, getPicklists }) => {
 	const submitted = (list) => list.status === 'submitted';
@@ -19,7 +19,7 @@ const RetrieveLists = ({ picklists, getPicklists }) => {
 
 	return (
 		<div className='retrieve-lists'>
-			<Timer />
+			<BarTimer />
 			{picklists.some(submitted) ? (
 				picklists.map(
 					(list) =>

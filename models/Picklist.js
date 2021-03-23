@@ -70,6 +70,7 @@ const PicklistSchema = mongoose.Schema({
 			'submitted',
 			'retrieving',
 			'retrieved',
+			'stocking',
 			'complete',
 		],
 		required: true,

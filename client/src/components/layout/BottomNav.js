@@ -8,7 +8,7 @@ const BottomNav = ({ currentPicklist, picklists, active }) => {
 	const newList = <CreatePicklist />;
 
 	const editList = (
-		<Link to='/current' className='new-list-btn btn btn-round '>
+		<Link to='/current' className='new-list-btn btn btn-round'>
 			<i className='fas fa-clipboard-check i-super-anchor'>
 				<i className='fas fa-pen i-super i-super-live'></i>
 			</i>

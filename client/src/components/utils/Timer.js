@@ -1,12 +1,17 @@
 import React from 'react';
 
-const Timer = () => {
+export const RingTimer = () => {
 	return (
 		<div className='refresh-ring'>
 			<div></div>
-			<div className='filler'></div>
 		</div>
 	);
 };
 
-export default Timer;
+export const BarTimer = () => {
+	return (
+		<div className='refresh-bar'>
+			<div className='bar-filler'></div>
+		</div>
+	);
+};

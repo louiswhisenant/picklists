@@ -9,11 +9,11 @@ const PicklistLower = ({ picklist }) => {
 					picklist.items.map((item) => (
 						<li key={item._id}>
 							{item.resolved === 'requested' ? (
-								<i className='fas fa-search c-retrieving'></i>
+								<i className='fas fa-search c-requested'></i>
 							) : item.resolved === 'retrieved' ? (
-								<i className='fas fa-check c-retrieved'></i>
+								<i className='fas fa-check c-found'></i>
 							) : (
-								<i className='fas fa-ban color-4'></i>
+								<i className='fas fa-ban c-not-found'></i>
 							)}
 							{item.size && (
 								<strong className='picklist-body-size'>
