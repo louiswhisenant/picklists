@@ -40,6 +40,7 @@ const CreatePicklist = ({ user, currentPicklist, addPicklist, logout }) => {
 			setPicklistName(`${user.name} ${formatTimeCST(Date.now())}`);
 			const newPicklist = {
 				list_name: picklistName,
+				date_created: Date.now(),
 			};
 
 			addPicklist(newPicklist);

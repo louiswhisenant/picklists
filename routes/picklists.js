@@ -85,11 +85,12 @@ router.post(
 		}
 
 		// ...otherwise...
-		const { list_name } = req.body;
+		const { list_name, date_created } = req.body;
 
 		try {
 			const newPicklist = new Picklist({
 				list_name,
+				date_created,
 				author_id: req.user.id,
 				author_name: req.user.name,
 			});

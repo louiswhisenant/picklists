@@ -735,6 +735,22 @@ select {
   .library-item-modal .modal-body .new-library-item-upc {
     display: flex; }
 
+.about {
+  max-width: 90%; }
+  .about a {
+    background-color: #a10000;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    color: #b3b3b3;
+    margin-left: 0.25rem; }
+    .about a:active {
+      background-color: #880000; }
+  .about .attributions {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 100; }
+
 @media (max-width: 768px) {
   .container {
     padding: 0; }

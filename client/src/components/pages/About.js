@@ -2,7 +2,7 @@ import React from 'react';
 
 export const About = () => {
 	return (
-		<div className='container'>
+		<div className='container about'>
 			<h1 className='display-4'>About Picklists</h1>
 			<p>
 				Picklists is a fullstack MERN application designed for assisting
@@ -19,15 +19,10 @@ export const About = () => {
 			</p>
 			<br />
 			<p>
-				Picklists was made with the user's needs in mind. It is only
-				meant to make the user's work easier and more efficient, not
-				more proper, and it is therefore unopinionated in much of its
-				functionality. The user can request multiples of a given item,
-				but one scan of the correct barcode will clear the item from the
-				retrieval. Features like this found in Picklists are by
-				intention. The ultimate goal is to harness the ability to
-				quickly strategize and react to in-store problems, without being
-				bound by the stubborn rulesets of stricter applications.
+				Picklists, in conjunction with an organized backstock area, will
+				yield fast shelf recovery and low shrink, as well as a more
+				evenly distributed workload across teams, and a prioritization
+				of 'precovery' over recovery.
 			</p>
 			<br />
 			<br />
@@ -35,11 +30,15 @@ export const About = () => {
 				Author:{' '}
 				<a href='https://www.louiswhisenant.com'>Louis Whisenant</a>
 			</p>
+			<p>
+				View Source:{' '}
+				<a href='https://github.com/louiswhisenant/picklists'>Github</a>
+			</p>
 			<br />
 			<p>
 				<strong>Version:</strong> 1.0.0
 			</p>
-			<h4>Attributions</h4>
+			<h4 className='attributions'>Attributions</h4>
 			<p>
 				Icons: <a href='https://fontawesome.com/'>Font Awesome</a>
 			</p>

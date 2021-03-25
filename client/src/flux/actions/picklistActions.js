@@ -166,14 +166,15 @@ export const deletePicklist = (id) => (dispatch, getState) => {
 				payload: id,
 			})
 		)
-		.catch((err) =>
-			dispatch(
-				returnErrors(
-					`[deletePicklist] ${err.response.data.msg}`,
-					'danger',
-					err.response.status
-				)
-			)
+		.catch(
+			(err) => console.log(err)
+			// dispatch(
+			// 	returnErrors(
+			// 		`[deletePicklist] ${err.response.data.msg}`,
+			// 		'danger',
+			// 		err.response.status
+			// 	)
+			// )
 		);
 };
 

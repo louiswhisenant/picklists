@@ -20,11 +20,6 @@ const Retrieve = ({
 	getRetrievePicklist,
 	loadUser,
 }) => {
-	// Load User
-	useEffect(() => {
-		loadUser();
-	}, [loadUser]);
-
 	// Load Picklists
 	useEffect(() => {
 		if (user) {

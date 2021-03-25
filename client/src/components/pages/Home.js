@@ -32,19 +32,17 @@ const Home = ({
 
 	// Load Picklists
 	useEffect(() => {
-		if (user) {
-			getPicklists();
-		}
-		// eslint-disable-next-line
-	}, [user, getPicklists]);
-
-	// Load Current Picklist
-	useEffect(() => {
-		if (user) {
+		const check = async () => {
+			await getPicklists();
 			getCurrentPicklist(user._id, 'initialized');
+		};
+
+		if (user && !authLoading) {
+			check();
 		}
+
 		// eslint-disable-next-line
-	}, [user, getCurrentPicklist]);
+	}, [user, getPicklists, getCurrentPicklist, loadUser]);
 
 	const loading = <Spinner />;
 

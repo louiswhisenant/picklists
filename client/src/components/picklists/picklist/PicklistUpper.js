@@ -3,6 +3,7 @@ import { CardBody, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
 	clearCurrentPicklist,
+	clearRetrievePicklist,
 	deletePicklist,
 	updatePicklist,
 } from '../../../flux/actions/picklistActions';
@@ -15,6 +16,7 @@ const PicklistUpper = ({
 	retrievePicklist,
 	user,
 	clearCurrentPicklist,
+	clearRetrievePicklist,
 	deletePicklist,
 	updatePicklist,
 	returnErrors,
@@ -24,12 +26,21 @@ const PicklistUpper = ({
 	const handleDelete = (id) => {
 		if (currentPicklist && id === currentPicklist._id) {
 			clearCurrentPicklist();
+		} else if (retrievePicklist && id === retrievePicklist._id) {
+			console.log('retrieve id match');
+			clearRetrievePicklist();
 		}
 		deletePicklist(id);
 	};
 
 	const handleRetrieve = (picklist) => {
-		if (!retrievePicklist) {
+		if (retrievePicklist) {
+			returnErrors(
+				'User already has a picklist in retrieving',
+				'danger',
+				null
+			);
+		} else {
 			let picklistToRetrieve = picklist;
 
 			picklistToRetrieve.retriever_id = user._id;
@@ -39,12 +50,6 @@ const PicklistUpper = ({
 			updatePicklist(picklistToRetrieve);
 
 			history.push('/retrieve');
-		} else {
-			returnErrors(
-				'User already has a picklist in retrieving',
-				'danger',
-				null
-			);
 		}
 	};
 
@@ -99,6 +104,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	clearCurrentPicklist,
+	clearRetrievePicklist,
 	deletePicklist,
 	updatePicklist,
 	returnErrors,
