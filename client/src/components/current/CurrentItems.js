@@ -73,7 +73,7 @@ const CurrentItems = ({ currentPicklist, updatePicklist }) => {
 						<Collapse isOpen={isOpen === _id}>
 							<CardBody className='current-items-item-options'>
 								<Button
-									className='remove-btn bg-1 mr-2'
+									className='remove-btn mr-2'
 									size='sm'
 									name='remove-btn'
 									onClick={(e) => handleDelete(e, _id)}>

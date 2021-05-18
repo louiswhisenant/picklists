@@ -1,0 +1,66 @@
+// -------------- Top Nav -------------- //
+
+#top-nav {
+	position: relative;
+	.navbar {
+		.navbar-toggler {
+			background-color: transparent;
+			.fas {
+				font-size: 1.75rem;
+				color: $color-2;
+			}
+		}
+	}
+
+	.navbar-collapse {
+		position: absolute;
+		z-index: 1;
+		right: 0;
+		width: 0;
+		height: calc(100vh - 8rem);
+		background-color: darken($dark, 10%);
+		display: none;
+
+		&.show {
+			right: 0;
+			width: initial;
+			height: calc(100vh - 8rem);
+			display: initial;
+		}
+	}
+
+	.navbar-nav {
+		height: 100%;
+
+		.nav-item {
+			margin: 0;
+
+			button {
+				background-color: darken($dark, 10%);
+				min-width: 10rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-radius: 0;
+				padding: 1rem;
+
+				&:hover {
+					background-color: $color-4;
+				}
+
+				i {
+					margin-right: 0.5rem;
+					background-color: $color-3;
+					border-radius: 50%;
+					padding: 0.5rem;
+					min-width: 2.2rem;
+					min-height: 2.2rem;
+				}
+			}
+		}
+
+		.top-nav-settings {
+			margin-top: auto;
+		}
+	}
+}

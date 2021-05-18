@@ -1,22 +1,69 @@
-import React, { Fragment } from 'react';
-import { BarTimer, RingTimer } from '../utils/Timer';
-import useSound from 'use-sound';
-import ding from '../../assets/sound/ding.mp3';
-import { Button } from 'reactstrap';
+import React, { Fragment, useState, useRef } from 'react';
+import Scanner from '../utils/Scanner';
+import Result from '../utils/ScannerResult';
 
 const Testing = () => {
-	const [play] = useSound(ding);
+	const [scanning, setScanning] = useState(false);
+	const [results, setResults] = useState([]);
+	const scannerRef = useRef(null);
 
-	const loading = (
-		<Fragment>
-			<RingTimer />
-			<BarTimer />
-			<Button onClick={play}>Ding</Button>
-			{/* <Spinner /> */}
-		</Fragment>
+	return (
+		<div>
+			<button onClick={() => setScanning(!scanning)} className='btn'>
+				{scanning ? (
+					<i className='fas fa-ban'></i>
+				) : (
+					<i className='fas fa-camera'></i>
+				)}
+			</button>
+
+			<div
+				ref={scannerRef}
+				style={{
+					position: 'relative',
+					height: '100%',
+					maxWidth: '100vw',
+					overflow: 'clip',
+					display: scanning ? 'initial' : 'none',
+				}}>
+				{scanning ? (
+					<Fragment>
+						<canvas
+							className='drawingBuffer'
+							style={{
+								position: 'absolute',
+								top: '0px',
+								left: '0px',
+							}}
+							// width='640'
+							// height='480'
+						/>
+						<Scanner
+							scannerRef={scannerRef}
+							onDetected={(result) => {
+								setResults([...results, result]);
+								setScanning(!scanning);
+							}}
+						/>
+					</Fragment>
+				) : null}
+			</div>
+
+			<ul className='results'>
+				{results.map(
+					(result) =>
+						result.codeResult && (
+							<Result
+								key={result.codeResult.code}
+								result={result}
+							/>
+						)
+				)}
+			</ul>
+
+			<input type='scan-result' defaultValue={results} />
+		</div>
 	);
-
-	return <Fragment>{loading}</Fragment>;
 };
 
 export default Testing;

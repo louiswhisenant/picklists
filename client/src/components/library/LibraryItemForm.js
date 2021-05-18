@@ -102,7 +102,6 @@ const LibraryItemForm = ({
 	return (
 		<Fragment>
 			<Button
-				className='bg-1'
 				onClick={() => {
 					handleToggle();
 					setItem(newItemData);
@@ -134,7 +133,7 @@ const LibraryItemForm = ({
 					{triggerName === 'Edit Item' ? 'Edit Item' : 'New Item'}
 				</ModalHeader>
 
-				<ModalBody className='bg-dark pb-5'>
+				<ModalBody className='bg-1 pb-5'>
 					<Form onSubmit={handleOnSubmit}>
 						<FormGroup>
 							<Label
@@ -202,8 +201,7 @@ const LibraryItemForm = ({
 															item.upcs[i] !== upc
 													),
 												})
-											}
-											className='btn bg-1'>
+											}>
 											<i className='fas fa-trash-alt'></i>
 										</Button>
 									</FormGroup>
@@ -225,18 +223,15 @@ const LibraryItemForm = ({
 					</div>
 				</ModalBody>
 
-				<ModalFooter className='bg-dark'>
+				<ModalFooter className='bg-1'>
 					<Button
 						onClick={handleOnSubmit}
-						className='ml-auto mr-3 btn btn-lg bg-1'>
+						className='ml-auto mr-3 btn-lg'>
 						{triggerName === 'Edit Item'
 							? 'Save Changes'
 							: 'Create Item'}
 					</Button>{' '}
-					<Button
-						color='secondary'
-						onClick={handleToggle}
-						className='btn btn-lg'>
+					<Button onClick={handleToggle} className='btn-lg'>
 						Cancel
 					</Button>
 				</ModalFooter>

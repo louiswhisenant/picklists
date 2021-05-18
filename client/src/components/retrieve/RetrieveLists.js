@@ -1,25 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getPicklists } from '../../flux/actions/picklistActions';
 import Picklist from '../picklists/picklist/Picklist';
-import { BarTimer } from '../utils/Timer';
+import ForceRefresh from '../utils/ForceRefresh';
+import { BarTimer, PauseBarTimer } from '../utils/Timer';
 
 const RetrieveLists = ({ picklists, getPicklists }) => {
 	const submitted = (list) => list.status === 'submitted';
+	const [pauseRefresh, setPauseRefresh] = useState(false);
+
+	useEffect(() => {
+		const checkForOpen = () => {
+			const picklistOpen = document.querySelector('.picklist-open');
+			console.log(picklistOpen);
+
+			picklistOpen ? setPauseRefresh(true) : setPauseRefresh(false);
+		};
+
+		document.addEventListener('click', checkForOpen);
+
+		return () => {
+			document.removeEventListener('click', checkForOpen);
+		};
+	}, [setPauseRefresh]);
 
 	useEffect(() => {
 		const refresh = setTimeout(() => {
-			getPicklists();
+			if (!pauseRefresh) {
+				getPicklists();
+			}
 		}, 10000);
 
 		return () => {
 			clearTimeout(refresh);
 		};
-	}, [getPicklists]);
+	}, [getPicklists, pauseRefresh]);
 
 	return (
 		<div className='retrieve-lists'>
-			<BarTimer />
+			<ForceRefresh />
+			{pauseRefresh ? <PauseBarTimer /> : <BarTimer />}
 			{picklists.some(submitted) ? (
 				picklists.map(
 					(list) =>

@@ -1,0 +1,23 @@
+#about-intro {
+	margin-top: -3rem;
+
+	.about-intro-perks {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: 1fr;
+		grid-column-gap: 0.5rem;
+		grid-row-gap: 0.5rem;
+	}
+}
+
+@media (min-width: $bp-md) {
+	#about-intro .about-intro-perks {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: $bp-lg) {
+	#about-intro .about-intro-perks {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

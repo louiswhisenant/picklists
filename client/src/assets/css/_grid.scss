@@ -1,0 +1,84 @@
+// Grid Parent
+.grid {
+	display: grid;
+
+	// Grid-Template-Columns
+	&.gtc-9 {
+		grid-template-columns: repeat(9, 1fr);
+	}
+
+	// Grid-Template-Rows
+	&.gtr-8 {
+		grid-template-rows: repeat(8, auto);
+	}
+
+	// Grid-Column
+	.gc-1 {
+		grid-column: 1;
+	}
+	.gc-2 {
+		grid-column: 2;
+	}
+	.gc-3 {
+		grid-column: 3;
+	}
+	.gc-4 {
+		grid-column: 4;
+	}
+	.gc-5 {
+		grid-column: 5;
+	}
+	.gc-6 {
+		grid-column: 6;
+	}
+	.gc-7 {
+		grid-column: 7;
+	}
+	.gc-8 {
+		grid-column: 8;
+	}
+	.gc-9 {
+		grid-column: 9;
+	}
+
+	.col-span-2 {
+		grid-column-end: span 2;
+	}
+	.col-span-5 {
+		grid-column-end: span 5;
+	}
+
+	// Grid-Row
+	.gr-1 {
+		grid-row: 1;
+	}
+	.gr-2 {
+		grid-row: 2;
+	}
+	.gr-3 {
+		grid-row: 3;
+	}
+	.gr-4 {
+		grid-row: 4;
+	}
+	.gr-5 {
+		grid-row: 5;
+	}
+	.gr-6 {
+		grid-row: 6;
+	}
+	.gr-7 {
+		grid-row: 7;
+	}
+	.gr-8 {
+		grid-row: 8;
+	}
+
+	// Justify-Self
+	.justify-self-center {
+		justify-self: center;
+	}
+	.justify-self-end {
+		justify-self: self-end;
+	}
+}

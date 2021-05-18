@@ -1,0 +1,61 @@
+// -------------- Bootstrap Overrides  -------------- //
+.modal {
+	.modal-dialog {
+		vertical-align: middle;
+	}
+}
+
+.btn {
+	border: none;
+	outline: none;
+	background-color: $color-4;
+	color: $color-2;
+
+	&:hover {
+		background-color: lighten($color-4, 5%);
+	}
+
+	&:focus {
+		background-color: $color-4;
+	}
+
+	&:not(:disabled):not(.disabled):active {
+		background-color: darken($color-4, 5%);
+		color: $color-2;
+	}
+
+	&:active {
+		background-color: darken($color-4, 5%);
+		color: $color-2;
+	}
+}
+
+.alert {
+	position: absolute;
+	top: calc(0% - 3rem);
+	left: 0;
+	width: 100%;
+	border-radius: 0;
+	text-align: center;
+}
+
+.list-group {
+	button {
+		border-radius: 0;
+	}
+}
+
+.form-control {
+	height: 3rem;
+	font-size: 1.25rem;
+}
+
+@media (max-width: $bp-md) {
+	.container {
+		padding: 0;
+	}
+
+	.card {
+		border-radius: 0;
+	}
+}

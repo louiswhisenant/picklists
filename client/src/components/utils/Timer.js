@@ -11,7 +11,15 @@ export const RingTimer = () => {
 export const BarTimer = () => {
 	return (
 		<div className='refresh-bar'>
-			<div className='bar-filler'></div>
+			<div className='bar-filler active'></div>
+		</div>
+	);
+};
+
+export const PauseBarTimer = () => {
+	return (
+		<div className='refresh-bar'>
+			<div className='bar-filler inactive'></div>
 		</div>
 	);
 };

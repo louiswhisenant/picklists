@@ -74,7 +74,7 @@ const RetrieveItems = ({ retrievePicklist, updatePicklist, returnErrors }) => {
 							<CardBody className='item-not-found'>
 								{resolved !== 'cancelled' ? (
 									<Button
-										className='item-not-found-btn bg-1'
+										className='item-not-found-btn'
 										size='sm'
 										name='cancel-btn'
 										onClick={(e) => handleCancel(e, _id)}>

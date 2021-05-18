@@ -71,7 +71,7 @@ const CreatePicklist = ({ user, currentPicklist, addPicklist, logout }) => {
 				<ModalHeader toggle={handleToggle} className='bg-1'>
 					Create New Picklist
 				</ModalHeader>
-				<ModalBody className='bg-dark'>
+				<ModalBody className='bg-1'>
 					<Form onSubmit={handleSubmit}>
 						<FormGroup>
 							<Label for='picklist-name-input'>
@@ -90,13 +90,10 @@ const CreatePicklist = ({ user, currentPicklist, addPicklist, logout }) => {
 					<div className='d-flex'>
 						<Button
 							onClick={handleSubmit}
-							className='ml-auto mr-3 btn btn-lg bg-1'>
+							className='ml-auto mr-3 btn-lg'>
 							Create
 						</Button>{' '}
-						<Button
-							color='secondary'
-							onClick={handleToggle}
-							className='btn btn-lg'>
+						<Button onClick={handleToggle} className='btn-lg'>
 							Cancel
 						</Button>
 					</div>

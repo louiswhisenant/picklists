@@ -1,0 +1,101 @@
+// -------------- Library -------------- //
+.library {
+	color: $dark;
+	.add-library-item-form {
+		.form-control {
+			margin-bottom: 1rem;
+		}
+		.new-item-triggers {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+
+			button {
+				min-height: 3rem;
+			}
+		}
+	}
+
+	.no-library-items-found {
+		font-size: 1.25rem;
+		line-height: 2.5rem;
+		color: $color-2;
+	}
+
+	.library-item-header {
+		.library-item-info {
+			.library-item-name {
+				font-weight: 400;
+				.library-item-size {
+					font-weight: 700;
+					margin-right: 0.5rem;
+				}
+			}
+		}
+	}
+	.library-item-collapse-upper {
+		.card-body {
+			padding: 0;
+			div {
+				display: flex;
+				justify-content: space-between;
+				background-color: $dark;
+				padding: 0.5rem 1rem;
+				margin-top: 0.75rem;
+
+				.btn {
+					min-height: 3rem;
+					min-width: 3rem;
+
+					i {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+	.library-item-collapse-lower {
+		border: none;
+		outline: none;
+		.library-item-upcs {
+			ul {
+				border: none;
+				margin-bottom: 0.75rem;
+				li {
+					display: flex;
+					padding: 0.75rem 1rem;
+					background-color: $dark;
+
+					&:nth-child(even) {
+						background-color: lighten($dark, 15%);
+					}
+
+					.library-item-upc {
+						margin: auto;
+						color: $color-2;
+					}
+				}
+			}
+		}
+	}
+}
+
+.library-item-modal {
+	.modal-body {
+		max-height: 65vh;
+		overflow-y: scroll;
+		.library-item-label {
+			margin-bottom: 0.1rem;
+			&:not(:first-of-type) {
+				margin-top: 1.2rem;
+			}
+		}
+		.library-item-add-upc-btn {
+			margin-top: 1rem;
+			display: block;
+		}
+		.new-library-item-upc {
+			display: flex;
+		}
+	}
+}

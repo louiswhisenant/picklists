@@ -82,8 +82,7 @@ const GetRetrieveItem = ({
 						<Button
 							onClick={(e) =>
 								handleSubmit(e, input, 'Retrieve button')
-							}
-							className='bg-1'>
+							}>
 							Retrieve Item
 						</Button>
 					</InputGroupAddon>

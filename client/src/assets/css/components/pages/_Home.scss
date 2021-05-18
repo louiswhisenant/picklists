@@ -1,0 +1,44 @@
+// -------------- Home -------------- //
+.home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.status-filter-hud {
+		display: flex;
+		width: 100%;
+
+		.status-filter-select {
+			background-color: $color-2;
+		}
+	}
+
+	.no-picklists-msg {
+		font-weight: 100;
+		margin: 5rem 3rem 2rem 3rem;
+		text-align: center;
+	}
+
+	.new-list-btn {
+		position: fixed;
+		bottom: 2.5rem;
+		right: 2.5rem;
+		min-width: 5rem;
+		min-height: 5rem;
+		border-radius: 50%;
+		color: $color-2;
+		background-color: $color-4;
+		border: 0.25rem solid $dark;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:active {
+			background-color: darken($color-4, 10%);
+		}
+
+		i {
+			font-size: 1.5rem;
+		}
+	}
+}

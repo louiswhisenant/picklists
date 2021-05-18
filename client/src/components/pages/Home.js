@@ -9,6 +9,7 @@ import { loadUser } from '../../flux/actions/authActions';
 import { Spinner } from '../loading/Loading';
 import BottomNav from '../layout/BottomNav';
 import { Container, Button, InputGroup } from 'reactstrap';
+import ForceRefresh from '../utils/ForceRefresh';
 
 const Home = ({
 	picklistLoading,
@@ -48,6 +49,7 @@ const Home = ({
 
 	return (
 		<Fragment>
+			<ForceRefresh />
 			<Container className='page-wrapper home'>
 				{user && !authLoading && !picklistLoading ? (
 					<Fragment>

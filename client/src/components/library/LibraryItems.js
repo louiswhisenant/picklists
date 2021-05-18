@@ -55,7 +55,7 @@ const LibraryItems = ({
 									)}
 									<div>
 										<Button
-											className='remove-btn bg-1'
+											className='remove-btn'
 											name='remove-btn'
 											onClick={(e) => {
 												e.stopPropagation();

@@ -82,8 +82,11 @@ const TopNav = ({ auth }) => {
 		<Fragment>
 			<div ref={node} className='nav-anchor' id='top-nav'>
 				<Navbar dark className='bg-1'>
-					<Link to='/' onClick={() => setIsOpen(false)}>
-						<i className='fas fa-home navbar-brand'></i>
+					<Link
+						to='/'
+						onClick={() => setIsOpen(false)}
+						className='navbar-brand'>
+						<i className='fas fa-home'></i>
 					</Link>
 
 					{auth.isAuthenticated && auth.user ? (

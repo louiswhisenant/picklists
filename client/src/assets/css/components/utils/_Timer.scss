@@ -1,0 +1,66 @@
+// -------------- Timer -------------- //
+.refresh-ring {
+	display: inline-block;
+	position: absolute;
+	top: 0.8rem;
+	right: 3.5rem;
+	width: 2rem;
+	height: 2rem;
+	animation: glow 10s ease-in infinte;
+	box-shadow: none;
+}
+.refresh-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 1.6rem;
+	height: 1.6rem;
+	margin: 0.2rem;
+	border: 0.2rem solid $color-2;
+	border-radius: 50%;
+	animation: refresh-ring 10s linear infinite;
+	border-color: transparent transparent transparent transparent;
+}
+
+.refresh-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0.25rem;
+	display: flex;
+	justify-content: flex-start;
+
+	.bar-filler {
+		width: 100%;
+		height: 100%;
+		background-color: $color-2;
+		opacity: 0.1;
+
+		&.active {
+			animation: bar-timer-active 10s linear;
+		}
+
+		&.inactive {
+			animation: bar-timer-inactive 2s linear infinite alternate;
+		}
+	}
+}
+
+@keyframes bar-timer-active {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 0%;
+	}
+}
+
+@keyframes bar-timer-inactive {
+	0% {
+		opacity: 0.1;
+	}
+	100% {
+		opacity: 0.3;
+	}
+}

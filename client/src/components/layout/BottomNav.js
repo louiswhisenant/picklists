@@ -31,10 +31,12 @@ const BottomNav = ({ currentPicklist, picklists, active }) => {
 						<span className='link-page-name'>Picklists</span>
 					</Link>
 				</NavItem>
+
 				<NavItem
 					className={`current ${active === 'current' && 'active'}`}>
 					{!currentPicklist ? newList : editList}
 				</NavItem>
+
 				<NavItem
 					className={`retrieve ${active === 'retrieve' && 'active'}`}>
 					<Link to='/retrieve'>
@@ -42,6 +44,7 @@ const BottomNav = ({ currentPicklist, picklists, active }) => {
 						<span className='link-page-name'>Retrieve</span>
 					</Link>
 				</NavItem>
+
 				<NavItem
 					className={`library ${active === 'library' && 'active'}`}>
 					<Link to='/library'>

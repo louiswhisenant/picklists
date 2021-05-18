@@ -1,0 +1,13 @@
+#about-how {
+	.about-how-learn-more {
+		background-color: $shadow;
+
+		&:hover {
+			background-color: lighten($shadow, 10%);
+		}
+
+		&:active {
+			background-color: darken($shadow, 10%);
+		}
+	}
+}

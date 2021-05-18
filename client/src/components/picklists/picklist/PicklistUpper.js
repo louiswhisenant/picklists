@@ -65,7 +65,7 @@ const PicklistUpper = ({
 	return (
 		<CardBody className='picklist-upper'>
 			<Button
-				className='remove-btn bg-1'
+				className='remove-btn'
 				name='remove-btn'
 				onClick={(e) => {
 					e.stopPropagation();
@@ -75,7 +75,7 @@ const PicklistUpper = ({
 			</Button>
 			{picklist.status === 'submitted' ? (
 				<Button
-					className='retrieve-btn bg-1'
+					className='retrieve-btn'
 					onClick={(e) => {
 						e.stopPropagation();
 						handleRetrieve(picklist);
@@ -84,7 +84,7 @@ const PicklistUpper = ({
 				</Button>
 			) : picklist.status === 'retrieved' ? (
 				<Button
-					className='complete-btn bg-1'
+					className='complete-btn'
 					onClick={(e) => {
 						e.stopPropagation();
 						handleComplete(picklist);

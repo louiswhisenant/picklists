@@ -1,0 +1,147 @@
+// -------------- Spinner -------------- //
+.spinner-anchor {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.lds-ring {
+		display: inline-block;
+		position: relative;
+		width: 80px;
+		height: 80px;
+	}
+	.lds-ring div {
+		box-sizing: border-box;
+		display: block;
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border: 8px solid $color-2;
+		border-radius: 50%;
+		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: $color-2 transparent transparent transparent;
+	}
+	.lds-ring div:nth-child(1) {
+		animation-delay: -0.45s;
+	}
+	.lds-ring div:nth-child(2) {
+		animation-delay: -0.3s;
+	}
+	.lds-ring div:nth-child(3) {
+		animation-delay: -0.15s;
+	}
+
+	@keyframes lds-ring {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+// -------------- Picklists Loading Skeleton -------------- //
+.picklist-skeleton {
+	animation: skeleton 2s linear infinite alternate;
+	margin-top: 1rem;
+	.card-body-skeleton {
+		.picklist-info-skeleton {
+			.card-title-skeleton {
+				width: 100%;
+				background-color: darken($color-3, 25%);
+				border-radius: 0.25rem;
+				opacity: 0.5;
+			}
+			.card-subtitle-skeleton {
+				width: 75%;
+				background-color: $dark;
+				border-radius: 0.25rem;
+				opacity: 0.5;
+			}
+			.date-skeleton {
+				width: 100%;
+				background-color: $color-2;
+				border-radius: 0.25rem;
+				opacity: 0.5;
+			}
+		}
+		.picklist-status-skeleton {
+			background-color: $complete;
+			width: 5rem;
+		}
+	}
+}
+
+// -------------- Current Skeleton -------------- //
+.current-picklist-skeleton {
+	animation: skeleton 2s linear infinite alternate;
+
+	form {
+		.input-group-append {
+			.add-item-btn-skeleton {
+				width: 8rem;
+				background-color: $color-3;
+			}
+		}
+	}
+
+	.list-group {
+		border-radius: 0;
+
+		.list-group-item {
+			height: 4rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			p {
+				margin: 0;
+			}
+			.name-skeleton {
+				background-color: $color-3;
+				width: 60%;
+			}
+			.qty-skeleton {
+				background-color: $dark;
+				width: 2.5rem;
+			}
+		}
+	}
+}
+
+// -------------- KeyFrames -------------- //
+@keyframes skeleton {
+	0% {
+		opacity: 0.25;
+	}
+	100% {
+		opacity: 0.75;
+	}
+}
+
+@keyframes refresh-ring {
+	0% {
+		transform: rotate(0deg);
+		border-color: transparent transparent transparent transparent;
+	}
+	25% {
+		transform: rotate(90deg);
+		border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
+	}
+	50% {
+		transform: rotate(180deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1) transparent
+			transparent;
+	}
+	75% {
+		transform: rotate(270deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+			rgba(255, 255, 255, 1) transparent;
+	}
+	100% {
+		transform: rotate(360deg);
+		border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+			rgba(255, 255, 255, 1) rgba(255, 255, 255, 1);
+	}
+}

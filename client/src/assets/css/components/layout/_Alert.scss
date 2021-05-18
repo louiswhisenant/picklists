@@ -1,0 +1,62 @@
+// -------------- Alert -------------- //
+.alert-anchor {
+	.alert {
+		z-index: 10;
+
+		.clear-alert-btn {
+			position: absolute;
+			right: 1rem;
+			color: $dark;
+			background-color: transparent;
+			outline: none;
+
+			border: none;
+			margin: 0;
+			text-decoration: none;
+			cursor: pointer;
+			text-align: center;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background: transparent;
+				outline: none;
+				border: none;
+			}
+		}
+	}
+}
+
+.modal-alert-anchor {
+	position: relative;
+	.alert {
+		z-index: 10;
+		top: 0;
+
+		.clear-alert-btn {
+			position: absolute;
+			right: 1rem;
+			color: $dark;
+			background-color: transparent;
+			outline: none;
+
+			border: none;
+			margin: 0;
+			text-decoration: none;
+			cursor: pointer;
+			text-align: center;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background: transparent;
+				outline: none;
+				border: none;
+			}
+		}
+	}
+}

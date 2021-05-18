@@ -31,15 +31,12 @@ const Logout = ({ logout }) => {
 					</div>
 					<div className='d-flex justify-content-center'>
 						<Form onSubmit={handleLogout}>
-							<Button
-								type='submit'
-								className='m-2 btn btn-lg bg-1'>
+							<Button type='submit' className='m-2 btn-lg'>
 								Logout
 							</Button>{' '}
 							<Button
-								color='secondary'
 								onClick={handleToggle}
-								className='m-2 btn btn-lg'>
+								className='m-2 btn-lg'>
 								Cancel
 							</Button>
 						</Form>

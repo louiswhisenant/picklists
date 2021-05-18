@@ -60,9 +60,7 @@ const Login = ({ isAuthenticated, error, login }) => {
 							}}
 						/>
 
-						<Button
-							className='btn btn-block bg-1 mt-5'
-							type='submit'>
+						<Button className='btn-block mt-5' type='submit'>
 							Login
 						</Button>
 					</FormGroup>

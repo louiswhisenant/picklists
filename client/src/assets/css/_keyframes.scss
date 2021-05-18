@@ -1,0 +1,54 @@
+@keyframes fade-in-left {
+	0% {
+		margin-left: -15rem;
+		opacity: 0;
+	}
+	100% {
+		margin-left: initial;
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in-bottom {
+	0% {
+		margin-top: 25vh;
+		opacity: 0;
+	}
+	100% {
+		margin-top: initial;
+		opacity: 1;
+	}
+}
+
+@keyframes grow-from-top {
+	0% {
+		height: 0;
+	}
+	100% {
+		height: 100%;
+	}
+}
+
+@keyframes grow-from-right {
+	0% {
+		width: 0;
+		margin-left: 100%;
+	}
+	100% {
+		width: 100%;
+		margin-left: initial;
+	}
+}
+
+@keyframes grow-from-center {
+	0% {
+		width: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	100% {
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
