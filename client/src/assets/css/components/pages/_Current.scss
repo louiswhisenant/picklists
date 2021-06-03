@@ -13,6 +13,15 @@
 		transform: translate(-50%, 0);
 		z-index: 1031;
 		background-color: $submitted;
+
+		&:hover {
+			background-color: lighten($submitted, 5%);
+		}
+
+		&:not(:disabled):not(.disabled):active,
+		:active {
+			background-color: darken($submitted, 5%) !important;
+		}
 	}
 
 	.submit-current-collapse {
@@ -26,6 +35,15 @@
 			background-color: $submitted;
 			box-shadow: 0 0 0.25rem 0 $shadow;
 			border: 0.2rem solid darken($submitted, 2.5%);
+
+			&:hover {
+				background-color: lighten($submitted, 5%);
+			}
+
+			&:not(:disabled):not(.disabled):active,
+			:active {
+				background-color: darken($submitted, 5%) !important;
+			}
 		}
 	}
 	// -------------- Current Items -------------- //

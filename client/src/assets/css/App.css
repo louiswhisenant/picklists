@@ -444,6 +444,11 @@
   transform: translate(-50%, 0);
   z-index: 1031;
   background-color: #067d9b; }
+  .current .submit-current-trigger:hover {
+    background-color: #0791b4; }
+  .current .submit-current-trigger:not(:disabled):not(.disabled):active,
+  .current .submit-current-trigger :active {
+    background-color: #056982 !important; }
 .current .submit-current-collapse {
   position: absolute;
   width: 100%;
@@ -454,6 +459,11 @@
     background-color: #067d9b;
     box-shadow: 0 0 0.25rem 0 #202020;
     border: 0.2rem solid #06738f; }
+    .current .submit-current-collapse .submit-current-btn:hover {
+      background-color: #0791b4; }
+    .current .submit-current-collapse .submit-current-btn:not(:disabled):not(.disabled):active,
+    .current .submit-current-collapse .submit-current-btn :active {
+      background-color: #056982 !important; }
 .current .current-items-list .current-items-item {
   box-shadow: 0 0 0.5rem #202020;
   transition: margin 0.2s ease; }
