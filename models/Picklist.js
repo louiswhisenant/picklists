@@ -61,6 +61,9 @@ const PicklistSchema = mongoose.Schema({
 				required: true,
 				default: 'requested',
 			},
+			color: {
+				type: String,
+			},
 		},
 	],
 	status: {

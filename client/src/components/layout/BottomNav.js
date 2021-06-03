@@ -16,6 +16,10 @@ const BottomNav = ({ currentPicklist, picklists, active }) => {
 		</Link>
 	);
 
+	const activePicklists = picklists.filter(
+		(picklist) => picklist.status !== 'complete'
+	);
+
 	return (
 		<Navbar className='bottom-nav navbar fixed-bottom' id='bottom-nav'>
 			<Nav>
@@ -23,8 +27,8 @@ const BottomNav = ({ currentPicklist, picklists, active }) => {
 					<Link to='/'>
 						<i className='fas fa-home i-super-anchor'>
 							<span className='i-super i-super-live picklist-count'>
-								{picklists.length < 10
-									? picklists.length
+								{activePicklists.length < 10
+									? activePicklists.length
 									: '...'}
 							</span>
 						</i>

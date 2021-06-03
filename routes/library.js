@@ -65,7 +65,7 @@ router.post(
 		}
 
 		// ...otherwise...
-		const { name, desc, upcs, size } = req.body;
+		const { name, desc, upcs, size, color } = req.body;
 
 		try {
 			// Check Library Items for UPC
@@ -86,6 +86,7 @@ router.post(
 				desc,
 				upcs,
 				size,
+				color,
 			});
 
 			const libraryItem = await newLibraryItem.save();
@@ -101,7 +102,7 @@ router.post(
 // @desc    Update Library Item
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-	const { name, size, desc, upcs } = req.body;
+	const { name, size, desc, upcs, color } = req.body;
 
 	// Build libraryItem object
 	const updatedData = {};
@@ -110,6 +111,7 @@ router.put('/:id', auth, async (req, res) => {
 	if (size) updatedData.size = size;
 	if (desc) updatedData.desc = desc;
 	if (upcs) updatedData.upcs = upcs;
+	if (color) updatedData.color = color;
 
 	try {
 		// Search libraryItems for libraryItem with id matching the params in the req

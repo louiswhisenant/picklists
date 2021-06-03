@@ -17,6 +17,9 @@ const LibraryItemSchema = mongoose.Schema({
 		required: true,
 		unique: true,
 	},
+	color: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model('libraryItem', LibraryItemSchema);

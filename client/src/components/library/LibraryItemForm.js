@@ -19,6 +19,7 @@ import {
 } from '../../flux/actions/libraryActions';
 import AlertHandler from '../layout/AlertHandler';
 import { returnErrors } from '../../flux/actions/errorActions';
+import { CirclePicker } from 'react-color';
 
 const LibraryItemForm = ({
 	addLibraryItem,
@@ -34,6 +35,7 @@ const LibraryItemForm = ({
 		size: '',
 		desc: '',
 		upcs: [],
+		color: '',
 	});
 
 	const [modal, setModal] = useState(false);
@@ -42,6 +44,10 @@ const LibraryItemForm = ({
 
 	const handleOnChange = (e) => {
 		setItem({ ...item, [e.target.name]: e.target.value });
+	};
+
+	const handleColor = (color) => {
+		setItem({ ...item, color: color.hex });
 	};
 
 	const handleUpcChange = (e, i) => {
@@ -173,6 +179,36 @@ const LibraryItemForm = ({
 								id='item-desc-input'
 								value={item.desc}
 								onChange={handleOnChange}
+							/>
+
+							<Label
+								for='item-color-input'
+								className='library-item-label'>
+								Color
+							</Label>
+							<CirclePicker
+								color={item.color}
+								onChangeComplete={handleColor}
+								triangle='hide'
+								width='100%'
+								colors={[
+									'#c00000',
+									'#e98400',
+									'#ecdd00',
+									'#00bb1f',
+									'#027716',
+									'#001ec7',
+									'#0e0183',
+									'#2c0270',
+									'#e90090',
+									'#fc61b6',
+									'#008f83',
+									'#0092d6',
+									'#000000',
+									'#ffffff',
+									'#555555',
+								]}
+								className='circle-picker'
 							/>
 
 							<Label

@@ -108,19 +108,29 @@
 			ul {
 				border: none;
 				margin-bottom: 0.75rem;
-				li:nth-child(odd) {
+				.picklist-item:nth-child(odd) {
 					background-color: $color-3;
 				}
-				li {
+				.picklist-item {
 					display: flex;
 					align-items: center;
 					padding: 0.75rem 1rem;
+					position: relative;
+
+					.picklist-item-color {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 0.75rem;
+						height: 100%;
+						opacity: 0.75;
+					}
 
 					i {
 						margin-right: 0.25rem;
 					}
 
-					.picklist-body-qty {
+					.picklist-item-qty {
 						margin-left: auto;
 					}
 				}

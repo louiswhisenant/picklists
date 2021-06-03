@@ -33,7 +33,7 @@ const LibraryItems = ({
 	return (
 		<Fragment>
 			{librarySearchTerm && librarySearch.length === 0 ? (
-				<Container className='mt-5 no-library-items-found'>
+				<Container className='mt-5 px-5 text-center no-library-items-found'>
 					<p>
 						No items matched the search term. If the item doesn't
 						exist, add the new item to the library with the New Item
@@ -85,6 +85,15 @@ const LibraryItems = ({
 									{/* If and when location data exists, it should be displayed here. */}
 									<small>{libraryItem.desc}</small>
 								</div>
+								<div
+									className='library-item-color'
+									style={{
+										backgroundColor: libraryItem.color,
+										borderRadius:
+											isOpen === libraryItem._id &&
+											'none',
+										left: isOpen === libraryItem._id && 0,
+									}}></div>
 							</CardBody>
 
 							<Collapse

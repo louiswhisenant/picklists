@@ -571,11 +571,21 @@
     font-size: 1.25rem;
     line-height: 2.5rem;
     color: #eeeeee; }
-  .library .library-item-header .library-item-info .library-item-name {
-    font-weight: 400; }
-    .library .library-item-header .library-item-info .library-item-name .library-item-size {
-      font-weight: 700;
-      margin-right: 0.5rem; }
+  .library .library-item-header {
+    position: relative;
+    cursor: pointer; }
+    .library .library-item-header .library-item-info .library-item-name {
+      font-weight: 400; }
+      .library .library-item-header .library-item-info .library-item-name .library-item-size {
+        font-weight: 700;
+        margin-right: 0.5rem; }
+    .library .library-item-header .library-item-color {
+      position: absolute;
+      top: -1%;
+      left: -0.2%;
+      width: 1rem;
+      height: 102%;
+      opacity: 0.5; }
   .library .library-item-collapse-upper .card-body {
     padding: 0; }
     .library .library-item-collapse-upper .card-body div {
@@ -618,6 +628,13 @@
   .library-item-modal .modal-body .new-library-item-upc {
     display: flex; }
 
+@media (min-width: 768px) {
+  .library .library-item-header .library-item-color {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem; } }
+@media (min-width: 992px) {
+  .library .library-item-header .library-item-color {
+    left: -0.1%; } }
 #about .line-wrapper {
   height: 10vh;
   display: flex;
@@ -949,15 +966,23 @@
     .picklist .picklist-lower-collapse .picklist-lower ul {
       border: none;
       margin-bottom: 0.75rem; }
-      .picklist .picklist-lower-collapse .picklist-lower ul li:nth-child(odd) {
+      .picklist .picklist-lower-collapse .picklist-lower ul .picklist-item:nth-child(odd) {
         background-color: #b3b3b3; }
-      .picklist .picklist-lower-collapse .picklist-lower ul li {
+      .picklist .picklist-lower-collapse .picklist-lower ul .picklist-item {
         display: flex;
         align-items: center;
-        padding: 0.75rem 1rem; }
-        .picklist .picklist-lower-collapse .picklist-lower ul li i {
+        padding: 0.75rem 1rem;
+        position: relative; }
+        .picklist .picklist-lower-collapse .picklist-lower ul .picklist-item .picklist-item-color {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0.75rem;
+          height: 100%;
+          opacity: 0.75; }
+        .picklist .picklist-lower-collapse .picklist-lower ul .picklist-item i {
           margin-right: 0.25rem; }
-        .picklist .picklist-lower-collapse .picklist-lower ul li .picklist-body-qty {
+        .picklist .picklist-lower-collapse .picklist-lower ul .picklist-item .picklist-item-qty {
           margin-left: auto; }
 
 .refresh-ring {

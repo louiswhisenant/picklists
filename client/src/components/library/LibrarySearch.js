@@ -19,10 +19,8 @@ const LibrarySearch = ({
 		setSearch(e.target.value);
 		if (e.target.value !== '') {
 			searchLibrary(e.target.value);
-			console.log('searching...');
 		} else {
 			clearLibrarySearch();
-			console.log('search cleared');
 		}
 
 		setNewItemData(e.target.value);

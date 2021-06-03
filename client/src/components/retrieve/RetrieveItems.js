@@ -95,9 +95,9 @@ const RetrieveItems = ({ retrievePicklist, updatePicklist, returnErrors }) => {
 								{resolved === 'requested' ? (
 									<i className='fas fa-search c-retrieving'></i>
 								) : resolved === 'retrieved' ? (
-									<i className='fas fa-check c-retrieved'></i>
+									<i className='fas fa-check c-found'></i>
 								) : (
-									<i className='fas fa-ban color-4'></i>
+									<i className='fas fa-ban c-not-found'></i>
 								)}
 							</div>
 							<div className='retrieve-items-name'>

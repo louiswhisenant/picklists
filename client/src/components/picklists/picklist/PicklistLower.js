@@ -7,7 +7,10 @@ const PicklistLower = ({ picklist }) => {
 			<ul>
 				{picklist.items.length > 0 ? (
 					picklist.items.map((item) => (
-						<li key={item._id}>
+						<li key={item._id} className='picklist-item'>
+							<div
+								className='picklist-item-color'
+								style={{ backgroundColor: item.color }}></div>
 							{item.resolved === 'requested' ? (
 								<i className='fas fa-search c-requested'></i>
 							) : item.resolved === 'retrieved' ? (
@@ -16,14 +19,14 @@ const PicklistLower = ({ picklist }) => {
 								<i className='fas fa-ban c-not-found'></i>
 							)}
 							{item.size && (
-								<strong className='picklist-body-size'>
+								<strong className='picklist-item-size'>
 									{item.size}&nbsp;
 								</strong>
 							)}
-							<span className='picklist-body-id'>
+							<span className='picklist-item-id'>
 								{item.name}
 							</span>
-							<span className='picklist-body-qty'>
+							<span className='picklist-item-qty'>
 								{item.qty}
 							</span>
 						</li>
