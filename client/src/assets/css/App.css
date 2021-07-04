@@ -159,17 +159,18 @@
     position: absolute;
     z-index: 1;
     right: 0;
-    width: 0;
-    height: calc(100vh - 8rem);
+    height: calc(100vh - 3.5rem);
     background-color: #323232;
-    display: none; }
+    transform: translateX(100%);
+    transition: transform 0.2s ease; }
     #top-nav .navbar-collapse.show {
-      right: 0;
-      width: initial;
-      height: calc(100vh - 8rem);
-      display: initial; }
+      display: initial;
+      transform: translateX(0%); }
+    #top-nav .navbar-collapse.collapsing {
+      transform: translateX(100%);
+      transition: transform 0.3s ease; }
   #top-nav .navbar-nav {
-    height: 100%; }
+    height: calc(100% - 4.5rem); }
     #top-nav .navbar-nav .nav-item {
       margin: 0; }
       #top-nav .navbar-nav .nav-item button {
@@ -189,8 +190,6 @@
           padding: 0.5rem;
           min-width: 2.2rem;
           min-height: 2.2rem; }
-    #top-nav .navbar-nav .top-nav-settings {
-      margin-top: auto; }
 
 #bottom-nav {
   width: 100%;

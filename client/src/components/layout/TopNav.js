@@ -31,6 +31,13 @@ const TopNav = ({ auth }) => {
 
 	const authLinks = (
 		<Fragment>
+			<NavItem className='top-nav-settings'>
+				<Link to='/settings' onClick={() => setIsOpen(false)}>
+					<Button>
+						<i className='fas fa-cog'></i> <span>Settings</span>
+					</Button>
+				</Link>
+			</NavItem>
 			<NavItem className='top-nav-testing'>
 				<Link to='/testing' onClick={() => setIsOpen(false)}>
 					<Button>
@@ -47,13 +54,6 @@ const TopNav = ({ auth }) => {
 			</NavItem>
 			<NavItem className='top-nav-logout'>
 				<Logout />
-			</NavItem>
-			<NavItem className='top-nav-settings'>
-				<Link to='/settings' onClick={() => setIsOpen(false)}>
-					<Button>
-						<i className='fas fa-cog'></i> <span>Settings</span>
-					</Button>
-				</Link>
 			</NavItem>
 		</Fragment>
 	);
